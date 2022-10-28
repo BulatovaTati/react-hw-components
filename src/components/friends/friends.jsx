@@ -9,26 +9,23 @@ function friendOnline(status) {
   }
 }
 
-const FriendList = ({ friends }) => {
+export const FriendList = ({ friends }) => {
   return (
-    <div class={styles.friends}>
-      <ul class={styles.friendlist}>
-        {friends.map(friend => (
-          <li class={styles.item} key={friend.id}>
+    <div className={styles.friends}>
+      <ul className={styles.friendlist}>
+        {friends.map(({id, isOnline, avatar, name}) => (
+          <li className={styles.item} key={id}>
             <span
-              class={styles.status}
-              style={{ color: friendOnline(friend.isOnline) }}
-            >
-              {' '}
-              ●
-            </span>
+              className={styles.status}
+              style={{ color: friendOnline(isOnline) }}
+            ></span>
             <img
-              class={styles.avatar}
-              src={friend.avatar}
-              alt={friend.name}
+              className={styles.avatar}
+              src={avatar}
+              alt='User avatar'
               width="48"
             />
-            <p class={styles.name}>{friend.name}</p>
+            <p className={styles.name}>{name}</p>
           </li>
         ))}
       </ul>
@@ -36,10 +33,7 @@ const FriendList = ({ friends }) => {
   );
 };
 FriendList.propTypes = {
-  avatar: PropTypes.string,
-  name: PropTypes.string,
-  isOnline: PropTypes.bool,
-  id: PropTypes.string.isRequired,
+friends: PropTypes.array,
 };
 
-export default FriendList;
+  

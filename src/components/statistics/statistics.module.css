@@ -6,7 +6,7 @@
 .title {
   text-align: center;
 }
-.statList {
+.stat_list {
   display: flex;
   flex-direction: row;
   padding: 0;
