@@ -1,5 +1,17 @@
 @import-normalize;
 
+:root {
+  --profileWidth: 250px;
+  --statisticWidth: 270px;
+  --profileBGColor: #f3f6f9;
+  --profileBorderCOlor: #e4e9f0;
+  --greyColor: #768696;
+  --darkBlueColor: #1f3349;
+  --textColorProfile: #9e9e9e;
+  --whiteTextcolor: #ffffff;
+  --accentColor: #00bcd5;
+  --tdBcgColor: #ecf1f4;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

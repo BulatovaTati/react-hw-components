@@ -2,37 +2,35 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 252px;
-  border: 1px solid #9e9e9e;
+  border: 1px solid var(--textColorProfile);
   border-radius: 4px;
 }
 .description {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   text-align: center;
   display: block;
-  border-bottom: 1px solid #9e9e9e;
+  border-bottom: 1px solid var(--textColorProfile);
 }
 .avatar {
   margin: 35px auto 0px auto;
-  background-color: #9e9e9e;
+  background-color: var(--textColorProfile);
   border-radius: 50%;
   max-width: 100px;
 }
 .name {
   font-size: 18px;
   font-weight: 600;
-  color: #212121;
+  color: var(--darkBlueColor);
 }
 .tag {
   margin: 1px auto 10px auto;
   font-size: 14px;
-  color: #535353;
+  color: var(--darkBlueColor);
 }
 .location {
   margin: 10px auto 20px auto;
   font-size: 14px;
-
-  color: #535353;
+  color: var(--darkBlueColor);
 }
 .stats {
   margin: 0;
@@ -41,6 +39,7 @@
   flex-direction: row;
   list-style-type: none;
   text-align: center;
+  background-color: var(--profileBGColor);
 }
 .stats li {
   display: flex;
@@ -48,16 +47,16 @@
   padding: 15px 0px;
   width: 82px;
   font-size: 12px;
-  color: #9e9e9e;
+  color: var(--textColorProfile);
 }
 .stats li:nth-child(2n) {
-  border-right: 1px solid #9e9e9e;
-  border-left: 1px solid #9e9e9e;
+  border-right: 1px solid var(--textColorProfile);
+  border-left: 1px solid var(--textColorProfile);
 }
 
 .quantity {
   margin-top: 4px;
   font-size: 15px;
   font-weight: 700;
-  color: #212121;
+  color: var(--darkBlueColor);
 }

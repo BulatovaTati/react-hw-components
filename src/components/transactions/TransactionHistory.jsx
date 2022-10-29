@@ -5,10 +5,9 @@ function upperFirstLetter(string) {
   let newStr = string[0].toUpperCase() + string.slice(1);
   return newStr;
 }
- export const TransactionHistory = ({ transactions }) => {
+ export const TransactionHistory = ({ items }) => {
   return (
-    <div className={styles.transTable}>
-      <table className="transaction-history">
+      <table className={styles.transactionHistory}>
         <thead className={styles.table}>
           <tr>
             <th>TYPE</th>
@@ -16,22 +15,21 @@ function upperFirstLetter(string) {
             <th>CURRENCY</th>
           </tr>
         </thead>
-        <tbody className={styles.tableBody}>
-          {transactions.map(({type, amount, currency, id}) => (
+        <tbody>
+          {items.map(({type, amount, currency, id}) => (
             <tr key={id}>
-              <td className={styles.tableData}>{upperFirstLetter(type)}</td>
-              <td className={styles.tableData}>{amount}</td>
-              <td className={styles.tableData}>{currency}</td>
+              <td>{upperFirstLetter(type)}</td>
+              <td>{amount}</td>
+              <td>{currency}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
   );
 };
 
 TransactionHistory.propTypes = {
-  transactions: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,

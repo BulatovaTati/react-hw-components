@@ -12,7 +12,7 @@ function friendOnline(status) {
  export const FriendList = ({ friends }) => {
   return (
     <div className={styles.friends}>
-      <ul className={styles.friendlist}>
+      <ul className={styles.friend__list}>
         {friends.map(({id, isOnline, avatar, name}) => (
           <li className={styles.item} key={id}>
             <span
