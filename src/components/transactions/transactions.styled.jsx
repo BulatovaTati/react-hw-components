@@ -2,11 +2,13 @@ import styled from '@emotion/styled';
 
 export const Table = styled.table`
   width: 100%;
-  max-width: 860px;
   background-color: ${props => props.theme.colors.whiteTextcolor};
-  margin: 0;
-  padding: 0;
-  border-spacing: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 768px) {
+    width: 860px;
+  }
 `;
 
 export const Thead = styled.thead`
