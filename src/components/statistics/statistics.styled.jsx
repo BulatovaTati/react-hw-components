@@ -34,6 +34,5 @@ export const Label = styled.span`
 
 export const Percentage = styled.span`
   font-size: 16px;
-  font-weight: 400;
   color: ${props => props.theme.colors.whiteTextcolor};
 `;
