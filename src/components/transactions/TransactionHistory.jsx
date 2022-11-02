@@ -14,7 +14,7 @@ export const TransactionHistory = ({ items }) => {
       <tbody>
         {items.map(({ type, amount, currency, id }) => (
           <Tr key={id}>
-            <Td>{upperFirstLetter(type)}</Td>
+            <Td>{upperCaseFirstLetter(type)}</Td>
             <Td>{amount}</Td>
             <Td>{currency}</Td>
           </Tr>
@@ -34,7 +34,8 @@ TransactionHistory.propTypes = {
     })
   ),
 };
-function upperFirstLetter(string) {
+
+function upperCaseFirstLetter(string) {
   let newStr = string[0].toUpperCase() + string.slice(1);
   return newStr;
 }
