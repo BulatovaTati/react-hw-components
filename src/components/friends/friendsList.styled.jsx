@@ -18,7 +18,7 @@ export const Item = styled.li`
   align-items: center;
   width: 100%;
   height: 130px;
-  margin: 7px;
+  margin: ${props => props.theme.space[3]}px;
   border: 1px solid ${props => props.theme.colors.borderColor};
   border-radius: 3px;
   box-shadow: ${props => props.theme.shadow.boxShadow};
@@ -43,5 +43,5 @@ export const Avatar = styled.img`
 export const FriendName = styled.p`
   margin-left: 18px;
   font-size: 28px;
-  font-weight: 500;
+  font-weight: ${props => props.theme.fontWeights.medium};
 `;

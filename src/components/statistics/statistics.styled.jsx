@@ -27,12 +27,12 @@ export const Item = styled.li`
 `;
 
 export const Label = styled.span`
-  margin-bottom: 7px;
-  font-size: 12px;
+  margin-bottom: ${props => props.theme.space[3]}px;
+  font-size: ${props => props.theme.fontSize.xs}px;
   color: ${props => props.theme.colors.whiteTextcolor};
 `;
 
 export const Percentage = styled.span`
-  font-size: 16px;
+  font-size: ${props => props.theme.fontSize.m}px;
   color: ${props => props.theme.colors.whiteTextcolor};
 `;

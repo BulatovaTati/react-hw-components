@@ -30,13 +30,13 @@ export const UserName = styled.p`
 
 export const Location = styled.p`
   margin: 10px auto 20px auto;
-  font-size: 14px;
+  font-size: ${props => props.theme.fontSize.s}px;
   color: ${props => props.theme.colors.darkBlueColor};
 `;
 
 export const Tag = styled.p`
   margin: 1px auto 10px auto;
-  font-size: 14px;
+  font-size: ${props => props.theme.fontSize.m}px;
   color: ${props => props.theme.colors.darkBlueColor};
 `;
 
@@ -55,7 +55,7 @@ export const BoxInfo = styled.li`
   flex-direction: column;
   padding: 15px 0px;
   width: 82px;
-  font-size: 12px;
+  font-size: ${props => props.theme.fontSize.xs}px;
   color: ${props => props.theme.colors.textColorProfile};
 
   &:nth-of-type(2n) {
@@ -64,8 +64,8 @@ export const BoxInfo = styled.li`
 `;
 
 export const Quantity = styled.span`
-  margin-top: 4px;
+  margin-top: ${props => props.theme.space[2]}px;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: ${props => props.theme.fontWeights.bold};
   color: ${props => props.theme.colors.darkBlueColor};
 `;

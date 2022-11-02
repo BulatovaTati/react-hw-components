@@ -20,7 +20,7 @@ export const Th = styled.th`
   padding: 16px 0;
   border-right: 1px solid ${props => props.theme.colors.whiteTextcolor};
   text-transform: uppercase;
-  font-weight: normal;
+  font-weight: ${props => props.theme.fontWeights.normal};
 
   &:last-child {
     border-right: none;
@@ -28,7 +28,7 @@ export const Th = styled.th`
 `;
 
 export const Td = styled.td`
-  padding: 16px;
+  padding: ${props => props.theme.space[4]}px;
   border-bottom: 1px solid ${props => props.theme.colors.profileBorderColor};
   border-right: 1px solid ${props => props.theme.colors.profileBorderColor};
   text-align-last: center;
