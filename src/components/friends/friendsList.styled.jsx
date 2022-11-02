@@ -16,12 +16,16 @@ export const Item = styled.li`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 360px;
+  width: 100%;
   height: 130px;
   margin: 7px;
   border: 1px solid ${props => props.theme.colors.borderColor};
   border-radius: 3px;
   box-shadow: ${props => props.theme.shadow.boxShadow};
+
+  @media (min-width: 768px) {
+    width: 360px;
+  }
 `;
 
 export const Status = styled.span`
