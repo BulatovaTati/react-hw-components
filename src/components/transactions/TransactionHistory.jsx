@@ -1,30 +1,26 @@
-import styles from './transactions.module.css';
 import PropTypes from 'prop-types';
+import { Table, Thead, Th, Td, Tr } from './transactions.styled';
 
-function upperFirstLetter(string) {
-  let newStr = string[0].toUpperCase() + string.slice(1);
-  return newStr;
-}
- export const TransactionHistory = ({ items }) => {
+export const TransactionHistory = ({ items }) => {
   return (
-      <table className={styles.transactionHistory}>
-        <thead className={styles.table}>
-          <tr>
-            <th>TYPE</th>
-            <th>AMOUNT</th>
-            <th>CURRENCY</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map(({type, amount, currency, id}) => (
-            <tr key={id}>
-              <td>{upperFirstLetter(type)}</td>
-              <td>{amount}</td>
-              <td>{currency}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <Table>
+      <Thead>
+        <tr>
+          <Th>TYPE</Th>
+          <Th>AMOUNT</Th>
+          <Th>CURRENCY</Th>
+        </tr>
+      </Thead>
+      <tbody>
+        {items.map(({ type, amount, currency, id }) => (
+          <Tr key={id}>
+            <Td>{upperFirstLetter(type)}</Td>
+            <Td>{amount}</Td>
+            <Td>{currency}</Td>
+          </Tr>
+        ))}
+      </tbody>
+    </Table>
   );
 };
 
@@ -38,3 +34,7 @@ TransactionHistory.propTypes = {
     })
   ),
 };
+function upperFirstLetter(string) {
+  let newStr = string[0].toUpperCase() + string.slice(1);
+  return newStr;
+}

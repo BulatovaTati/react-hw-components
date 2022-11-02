@@ -1,40 +1,29 @@
-import styles from './friends.module.css';
 import PropTypes from 'prop-types';
+import {
+  Container,
+  FriendsList,
+  Item,
+  Status,
+  Avatar,
+  FriendName,
+} from './friendsList.styled';
 
-function friendOnline(status) {
-  if (status) {
-    return '#2ECC71';
-  } else {
-    return '#E74C3C';
-  }
-}
-
- export const FriendList = ({ friends }) => {
+export const FriendList = ({ friends }) => {
   return (
-    <div className={styles.friends}>
-      <ul className={styles.friend__list}>
-        {friends.map(({id, isOnline, avatar, name}) => (
-          <li className={styles.item} key={id}>
-            <span
-              className={styles.status}
-              style={{ color: friendOnline(isOnline) }}
-            >
-               {' '}
-              ●
-            </span>
-            <img
-              className={styles.avatar}
-              src={avatar}
-              alt='User avatar'
-              width="48"
-            />
-            <p className={styles.name}>{name}</p>
-          </li>
+    <Container>
+      <FriendsList>
+        {friends.map(({ id, isOnline, avatar, name }) => (
+          <Item key={id}>
+            <Status style={{ color: friendOnline(isOnline) }}>●</Status>
+            <Avatar src={avatar} alt="User avatar" width="48" />
+            <FriendName>{name}</FriendName>
+          </Item>
         ))}
-      </ul>
-    </div>
+      </FriendsList>
+    </Container>
   );
 };
+
 FriendList.propTypes = {
   friends: PropTypes.arrayOf(
     PropTypes.shape({
@@ -46,4 +35,10 @@ FriendList.propTypes = {
   ),
 };
 
- 
+function friendOnline(status) {
+  if (status) {
+    return '#2ECC71';
+  } else {
+    return '#E74C3C';
+  }
+}
