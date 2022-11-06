@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Phonebook = () => {
+function Home() {
   return (
     <h1
       style={{
         textAlign: 'center',
       }}
     >
-      Your Phonebook!
+      Choise the folder
     </h1>
   );
-};
+}
 
-export default Phonebook;
+export default Home;
