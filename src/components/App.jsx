@@ -2,9 +2,10 @@ import React from 'react';
 import Navbar from '../pages/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Feedback from '../pages/feedback';
-import Phonebook from '../pages/phonebook';
-import Home from '../pages/home';
+import Feedback from '../pages/Feedback';
+
+import Phonebook from '../pages/Phonebook';
+import Home from '../pages/Home';
 
 function App() {
   return (
@@ -18,5 +19,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
