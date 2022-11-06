@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../pages/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import FeedbackPage from '../pages/Feedback';
+import FeedbackPage from '../pages/Feedback.jsx';
 
 import Phonebook from '../pages/Phonebook';
 import Home from '../pages/Home';
