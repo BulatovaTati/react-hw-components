@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  width: 300px;
+  max-width: 400px;
   margin: 0 auto;
+  background-color: #e6f3fa;
 `;
 
 export const Item = styled.ul`

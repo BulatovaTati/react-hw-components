@@ -37,7 +37,7 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
             </IconContext.Provider>
           ))}
           <Stats>
-            {totalPositiveStars} \ {starArr.length}
+            {totalPositiveStars} / {starArr.length}
           </Stats>
         </Stars>
       </Item>

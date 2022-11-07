@@ -9,6 +9,7 @@ export const Nav = styled.nav`
 `;
 
 export const NavLink = styled(Link)`
+  font-weight: 700;
   color: ${props => props.theme.colors.mainTextColor};
   display: flex;
   align-items: center;

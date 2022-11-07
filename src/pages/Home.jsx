@@ -5,9 +5,10 @@ function Home() {
     <h1
       style={{
         textAlign: 'center',
+        padding: '30px 0',
       }}
     >
-      Choise the folder
+      Please, choise the page
     </h1>
   );
 }
