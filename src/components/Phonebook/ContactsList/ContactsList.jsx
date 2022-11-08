@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { ContactItem } from '../index';
 import { Empty, Title, Wrapper } from './ContactsList.styled';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const EntryContainer = ({ children, ...props }) => {
   const nodeRef = React.useRef(null);

@@ -22,6 +22,7 @@ class Phonebook extends Component {
 
   onSearch = evt => {
     const value = evt.target.value;
+    console.log('value: ', value);
     this.setState({ filter: value });
   };
 
@@ -67,6 +68,7 @@ class Phonebook extends Component {
             addContact={this.addContact}
           />
         )}
+
         {isOpenFilter && <Filter value={filter} onSearch={this.onSearch} />}
 
         <ContactsList

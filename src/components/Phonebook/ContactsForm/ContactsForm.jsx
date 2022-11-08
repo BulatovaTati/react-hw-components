@@ -36,11 +36,13 @@ const ContactsForm = ({ addContact, contacts, toggle }) => {
     const isInclude = contacts.some(
       contact => contact.name.toLowerCase() === values.name.toLowerCase()
     );
+
     if (isInclude) {
       Notify.failure(`${values.name} is already in contacts`);
       return;
     }
-    values.id = nanoid(6);
+
+    values.id = nanoid(7);
     addContact(values);
     resetForm();
   };

@@ -5,8 +5,7 @@ const Filter = ({ onSearch, value }) => {
   return (
     <FilterWrapper>
       <Title>Filter</Title>
-
-      <Input onChange={onSearch} value={value} type="text" name="filter" />
+      <Input type="text" name="filter" value={value} onChange={onSearch} />
     </FilterWrapper>
   );
 };
