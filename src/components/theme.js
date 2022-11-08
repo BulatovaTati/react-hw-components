@@ -2,12 +2,15 @@ export const theme = {
   colors: {
     NavBGColor: '#08f',
     mainTextColor: '#000',
-    whiteTextcolor: '#ffffff',
+    whiteTextColor: '#ffffff',
+    bcgTable: '#e6f3fa',
+    borderColor: '#ccc',
+    bcgBtn: '#66abe7',
+    iconColor: '#4287f5',
+    borderBot: '#4287f5',
   },
+  fontSizes: [12, 14, 16, 18, 24, 32, 36, 72, 96],
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
-  shadow: {
-    boxShadow: '1px 2px 3px rgba(0, 0, 0, 0.4)',
-  },
   fontSize: {
     xs: 12,
     s: 14,

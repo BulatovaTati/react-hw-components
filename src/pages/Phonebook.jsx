@@ -1,12 +1,11 @@
+import React, { Component } from 'react';
 import {
   ContactsForm,
   Container,
-  NavBar,
+  Menu,
   ContactsList,
   Filter,
-} from '../components/Phonebook';
-
-import React, { Component } from 'react';
+} from 'components/Phonebook';
 
 class Phonebook extends Component {
   state = {
@@ -56,7 +55,7 @@ class Phonebook extends Component {
 
     return (
       <Container>
-        <NavBar
+        <Menu
           isOpenForm={isOpenForm}
           isOpenFilter={isOpenFilter}
           toggle={this.toggle}

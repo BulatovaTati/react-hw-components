@@ -1,7 +1,7 @@
-import { Button, Wrapper, Title } from './NavBar.styled';
+import { Button, Wrapper, Title } from './Menu.styled';
 import { RiUserSearchLine, RiUserAddLine } from 'react-icons/ri';
 
-const NavBar = ({ toggle, isOpenFilter, isOpenForm }) => {
+const Menu = ({ toggle, isOpenFilter, isOpenForm }) => {
   return (
     <Wrapper>
       <Title>PHONEBOOK</Title>
@@ -27,4 +27,4 @@ const NavBar = ({ toggle, isOpenFilter, isOpenForm }) => {
   );
 };
 
-export default NavBar;
+export default Menu;

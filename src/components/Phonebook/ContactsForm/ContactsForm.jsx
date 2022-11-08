@@ -60,7 +60,8 @@ const ContactsForm = ({ addContact, contacts, toggle }) => {
                 id="name"
                 type="text"
                 name="name"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                title="Name may contain only letters, apostrophe, dash and spaces. 
+                For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               />
               <ErrorMsg name="name" component="div" />
             </Label>

@@ -4,7 +4,7 @@ import {
   Statistics,
   Notification,
   FeedbackOptions,
-} from '../components/Feedback';
+} from 'components/Feedback';
 
 class Feedback extends Component {
   state = {

@@ -3,69 +3,71 @@ import { Field, ErrorMessage } from 'formik';
 
 export const FormWrapper = styled.div`
   padding: 20px 40px;
-  background-color: #e6f3fa;
-  border-bottom: 2px solid #4287f5;
+  background-color: ${props => props.theme.colors.bcgTable};
+  border-bottom: 2px solid ${props => props.theme.colors.borderBot};
   text-align: center;
+  border-radius: 10px;
 `;
 
 export const FormInner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 auto 20px;
+  margin: 0 auto ${props => props.theme.space[4]}px;
   text-align: start;
-  width: 300px;
+  max-width: 300px;
 `;
 
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-weight: 500;
+  font-weight: ${props => props.theme.fontWeights.medium};
+
   :not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: ${props => props.theme.space[4]}px;
   }
-  /* align-items: flex-start;
-  margin: 0 auto;
-  width: 300px; */
 `;
 
 export const Input = styled(Field)`
-  font-size: 20px;
+  font-size: ${props => props.theme.fontSizes[3]}px;
   padding: 5px 10px;
-  border: 2px solid #ccc;
+  border: 2px solid ${props => props.theme.colors.borderColor};
   border-radius: 5px;
   outline: none;
+
+  :hover,
   :focus {
-    border-color: #4287f5;
+    border-color: ${props => props.theme.colors.borderBot};
   }
 `;
 
 export const Button = styled.button`
-  min-width: 100px;
-  padding: 5px 10px;
-  font-size: 20px;
+  min-width: 120px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 5px;
-  border: 1px solid #fff;
-  background-color: #4287f5;
-  color: #4287f5;
-  background-color: transparent;
-  border: 1px solid #4287f5;
-  transition: all 100ms linear;
+  border: 2px solid ${props => props.theme.colors.whiteTextColor};
+  font-size: ${props => props.theme.fontSizes[3]}px;
+  color: ${props => props.theme.colors.whiteTextColor};
+  background-color: ${props => props.theme.colors.bcgBtn};
+  text-align: center;
+  transition: all 250ms linear;
   cursor: pointer;
+  border-radius: 10px;
+
   :not(:last-child) {
     margin-right: 10px;
   }
+
   :hover {
-    color: #fff;
-    border-color: #fff;
-    background-color: #4287f5;
+    border: 2px solid ${props => props.theme.colors.bcgBtn};
+    color: ${props => props.theme.colors.bcgBtn};
+    background-color: ${props => props.theme.colors.whiteTextColor};
   }
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
   margin-top: 5px;
-  font-size: 14px;
+  font-size: ${props => props.theme.fontSizes[1]}px;
   color: red;
 `;

@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   padding: 10px 20px;
   background-color: #66abe7;
+  border-radius: 10px;
 `;
 
 export const Title = styled.div`

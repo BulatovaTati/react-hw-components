@@ -1,5 +1,4 @@
 import React from 'react';
-import './ContactsList.css';
 import PropTypes from 'prop-types';
 import { ContactItem } from '../index';
 import { Empty, Title, Wrapper } from './ContactsList.styled';

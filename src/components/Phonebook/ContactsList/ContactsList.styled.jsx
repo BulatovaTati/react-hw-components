@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  padding: 20px 40px;
-  background-color: #e6f3fa;
+  padding: ${props => props.theme.space[5]}px;
+  background-color: ${props => props.theme.colors.bcgTable};
+  border-radius: 10px;
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 20px;
+  margin-bottom: ${props => props.theme.space[4]}px;
   text-align: center;
 `;
 

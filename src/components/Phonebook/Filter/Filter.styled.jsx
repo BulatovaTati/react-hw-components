@@ -2,23 +2,27 @@ import styled from 'styled-components';
 
 export const FilterWrapper = styled.div`
   padding: 20px 40px;
-  background-color: #e6f3fa;
-  border-bottom: 2px solid #4287f5;
+  background-color: ${props => props.theme.colors.bcgTable};
+  border-bottom: 2px solid ${props => props.theme.colors.borderBot};
   text-align: center;
+  border-radius: 10px;
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 20px;
+  margin-bottom: ${props => props.theme.space[4]}px;
   text-align: center;
 `;
 
 export const Input = styled.input`
-  font-size: 20px;
+  font-size: ${props => props.theme.fontSizes[3]}px;
   padding: 5px 10px;
-  border: 2px solid #ccc;
+  border: 2px solid ${props => props.theme.colors.borderColor};
   border-radius: 5px;
   outline: none;
+  width: 80%;
+
+  :hover,
   :focus {
-    border-color: #4287f5;
+    border-color: ${props => props.theme.colors.borderBot};
   }
 `;

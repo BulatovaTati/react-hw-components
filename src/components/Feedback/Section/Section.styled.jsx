@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const PageSection = styled.section`
-  padding: 30px 0;
+  padding: ${props => props.theme.space[5]}px 0;
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 20px;
-  font-size: 32px;
+  margin-bottom: ${props => props.theme.space[4]}px;
+  font-size: ${props => props.theme.fontSizes[5]}px;
   text-align: center;
 `;
