@@ -1,8 +1,16 @@
 import PropTypes from 'prop-types';
-import { Item, List, Text, Stars, Stats } from './Statistics.styled';
+import {
+  Item,
+  List,
+  Text,
+  Stars,
+  Stats,
+  IconGood,
+  IconBad,
+  IconNeutral,
+} from './Statistics.styled';
 import { IconContext } from 'react-icons';
 import { AiFillStar } from 'react-icons/ai';
-
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   const starArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const totalPositiveStars = Math.floor(positivePercentage / 10);
@@ -10,12 +18,15 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
     <List>
       <Item>
+        <IconGood />
         <Text>Good: {good}</Text>
       </Item>
       <Item>
+        <IconNeutral />
         <Text>Neutral: {neutral}</Text>
       </Item>
       <Item>
+        <IconBad />
         <Text>Bad: {bad}</Text>
       </Item>
       <Item>
