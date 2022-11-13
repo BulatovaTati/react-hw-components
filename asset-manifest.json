@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-hw-components/static/css/main.c4faea95.css",
-    "main.js": "/react-hw-components/static/js/main.42806ff4.js",
+    "main.js": "/react-hw-components/static/js/main.5978238c.js",
     "index.html": "/react-hw-components/index.html",
     "main.c4faea95.css.map": "/react-hw-components/static/css/main.c4faea95.css.map",
-    "main.42806ff4.js.map": "/react-hw-components/static/js/main.42806ff4.js.map"
+    "main.5978238c.js.map": "/react-hw-components/static/js/main.5978238c.js.map"
   },
   "entrypoints": [
     "static/css/main.c4faea95.css",
-    "static/js/main.42806ff4.js"
+    "static/js/main.5978238c.js"
   ]
 }
