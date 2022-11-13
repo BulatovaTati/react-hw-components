@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   ContactsForm,
   Container,
@@ -22,23 +23,26 @@ class Phonebook extends Component {
 
   onSearch = evt => {
     const value = evt.target.value;
-    console.log('value: ', value);
     this.setState({ filter: value });
   };
 
   addContact = data => {
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, data],
-    }));
+    this.setState(
+      prevState => ({
+        contacts: [...prevState.contacts, data],
+      }),
+      Notify.success('Contact added')
+    );
     this.toggle('isOpenForm');
   };
 
   deleteContact = id => {
-    this.setState(prevState => {
-      return {
+    this.setState(
+      prevState => ({
         contacts: prevState.contacts.filter(contact => contact.id !== id),
-      };
-    });
+      }),
+      Notify.success('Contact removed')
+    );
   };
 
   toggle = component => {

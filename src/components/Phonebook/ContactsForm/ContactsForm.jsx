@@ -2,6 +2,7 @@ import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   Button,
   ErrorMsg,
@@ -10,7 +11,6 @@ import {
   Input,
   Label,
 } from './ContactsForm.styled';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const nameRegExp = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
