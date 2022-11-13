@@ -53,9 +53,8 @@ class Phonebook extends Component {
 
   render() {
     const { filter, contacts, isOpenForm, isOpenFilter } = this.state;
-    const normalizedFilter = filter.toLowerCase();
     const filteredContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
+      contact.name.toLowerCase().includes(filter.toLowerCase())
     );
 
     return (
