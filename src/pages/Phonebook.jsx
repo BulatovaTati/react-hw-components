@@ -58,27 +58,29 @@ class Phonebook extends Component {
     );
 
     return (
-      <Container>
-        <Menu
-          isOpenForm={isOpenForm}
-          isOpenFilter={isOpenFilter}
-          toggle={this.toggle}
-        />
-        {isOpenForm && (
-          <ContactsForm
+      <main>
+        <Container>
+          <Menu
+            isOpenForm={isOpenForm}
+            isOpenFilter={isOpenFilter}
             toggle={this.toggle}
-            contacts={contacts}
-            addContact={this.addContact}
           />
-        )}
+          {isOpenForm && (
+            <ContactsForm
+              toggle={this.toggle}
+              contacts={contacts}
+              addContact={this.addContact}
+            />
+          )}
 
-        {isOpenFilter && <Filter value={filter} onSearch={this.onSearch} />}
+          {isOpenFilter && <Filter value={filter} onSearch={this.onSearch} />}
 
-        <ContactsList
-          deleteHandler={this.deleteContact}
-          contacts={filteredContacts}
-        />
-      </Container>
+          <ContactsList
+            deleteHandler={this.deleteContact}
+            contacts={filteredContacts}
+          />
+        </Container>
+      </main>
     );
   }
 }

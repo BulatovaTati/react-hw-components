@@ -39,7 +39,7 @@ class Feedback extends Component {
     const options = Object.keys(this.state);
 
     return (
-      <>
+      <main>
         <Section title="Please leave feedback">
           <FeedbackOptions options={options} onClick={this.handleClick} />
         </Section>
@@ -57,7 +57,7 @@ class Feedback extends Component {
             <Notification message="There is no feedback" />
           )}
         </Section>
-      </>
+      </main>
     );
   }
 }
