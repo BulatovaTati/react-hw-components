@@ -1,11 +1,18 @@
 import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Nav = styled.nav`
-  background: ${props => props.theme.colors.NavBGColor};
-  height: 85px;
+export const Header = styled.header`
   display: flex;
   justify-content: center;
+  gap: 12px;
+  height: 85px;
+  padding: 8px 0;
+  border-bottom: 1px solid black;
+  background: ${props => props.theme.colors.NavBGColor};
+
+  > nav {
+    display: flex;
+  }
 `;
 
 export const NavLink = styled(Link)`
@@ -26,9 +33,4 @@ export const NavLink = styled(Link)`
   &:focus {
     color: ${props => props.theme.colors.whiteTextColor};
   }
-`;
-
-export const NavMenu = styled.div`
-  display: flex;
-  align-items: center;
 `;
