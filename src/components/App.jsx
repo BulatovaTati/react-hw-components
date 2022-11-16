@@ -10,7 +10,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/phonebook" element={<Phonebook />} />
         <Route path="*" element={<NotFound />} />
