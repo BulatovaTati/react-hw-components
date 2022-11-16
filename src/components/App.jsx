@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import FeedbackPage from '../pages/Feedback';
 import Navbar from './NavBar/NavBar';
 import Phonebook from '../pages/Phonebook';
@@ -7,14 +7,14 @@ import Home from '../pages/Home';
 
 function App() {
   return (
-    <Router>
+    <div>
       <Navbar />
       <Routes>
-        <Route exact path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/phonebook" element={<Phonebook />} />
       </Routes>
-    </Router>
+    </div>
   );
 }
 export default App;
