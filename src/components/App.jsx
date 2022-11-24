@@ -1,5 +1,6 @@
 import { Profile } from './userInfo/profile';
 import user from './userInfo/user.json';
+
 import { Statistics } from './statistics/statistics';
 import statisticalData from './statistics/data.json';
 
