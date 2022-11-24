@@ -11,7 +11,7 @@ import {
 } from './Statistics.styled';
 import { IconContext } from 'react-icons';
 import { AiFillStar } from 'react-icons/ai';
-const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+const Statistics = ({ good, neutral, bad, totalFeed, positivePercentage }) => {
   const starArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const totalPositiveStars = Math.floor(positivePercentage / 10);
 
@@ -30,14 +30,14 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
         <Text>Bad: {bad}</Text>
       </Item>
       <Item>
-        <Text>Total: {total}</Text>
+        <Text>Total: {totalFeed}</Text>
       </Item>
       <Item>
         <Text>Positive feedback: {positivePercentage} %</Text>
       </Item>
       <Item>
         <Stars>
-          {starArr.map((el, index) => (
+          {starArr.map((_, index) => (
             <IconContext.Provider
               key={index}
               value={{
@@ -47,6 +47,7 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
               <AiFillStar />
             </IconContext.Provider>
           ))}
+
           <Stats>
             {totalPositiveStars} / {starArr.length}
           </Stats>

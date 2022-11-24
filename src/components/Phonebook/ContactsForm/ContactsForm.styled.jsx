@@ -4,7 +4,7 @@ import { Field, ErrorMessage } from 'formik';
 export const FormWrapper = styled.div`
   padding: 20px 40px;
   background-color: ${props => props.theme.colors.bcgTable};
-  border-bottom: 2px solid ${props => props.theme.colors.borderBot};
+  border-bottom: 2px solid ${props => props.theme.colors.NavBGColor};
   text-align: center;
   border-radius: 10px;
 `;
@@ -35,41 +35,16 @@ export const Input = styled(Field)`
   border: 2px solid ${props => props.theme.colors.borderColor};
   border-radius: 5px;
   outline: none;
+  transition: border-color 250ms cubic-bezier(0.57, 0.21, 0.69, 1.25);
 
   :hover,
   :focus {
-    border-color: ${props => props.theme.colors.borderBot};
-  }
-`;
-
-export const Button = styled.button`
-  min-width: 120px;
-  padding: 10px 20px;
-  border: none;
-  border: 1px solid transparent;
-
-  font-size: ${props => props.theme.fontSizes[3]}px;
-  color: ${props => props.theme.colors.whiteTextColor};
-  background-color: ${props => props.theme.colors.bcgBtn};
-  text-align: center;
-
-  transition: all 250ms linear;
-  cursor: pointer;
-  border-radius: 10px;
-
-  :not(:last-child) {
-    margin-right: 10px;
-  }
-
-  :hover {
-    border: 1px solid ${props => props.theme.colors.bcgBtn};
-    color: ${props => props.theme.colors.bcgBtn};
-    background-color: ${props => props.theme.colors.whiteTextColor};
+    border-color: ${props => props.theme.colors.NavBGColor};
   }
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
   margin-top: 5px;
   font-size: ${props => props.theme.fontSizes[1]}px;
-  color: red;
+  color: ${props => props.theme.colors.errorMessage};
 `;

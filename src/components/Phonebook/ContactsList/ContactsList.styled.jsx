@@ -11,6 +11,4 @@ export const Title = styled.h2`
   text-align: center;
 `;
 
-export const Empty = styled.p`
-  text-align: center;
-`;
+ 

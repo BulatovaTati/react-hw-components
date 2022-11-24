@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
-import { PageSection, Title } from './Section.styled';
+import { TitleEl } from 'common/Title/Title';
+import { PageSection } from './Section.styled';
 
 const Section = ({ title, children }) => {
   return (
     <PageSection>
-      {title && <Title>{title}</Title>}
+      {title && <TitleEl str={title} />}
 
       {children}
     </PageSection>

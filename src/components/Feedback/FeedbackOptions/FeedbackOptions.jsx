@@ -11,7 +11,7 @@ const FeedbackOptions = ({ options, onClick }) => {
 
         return (
           <BtnItem key={index}>
-            <Button onClick={() => onClick(option)} type="button">
+            <Button type="button" onClick={() => onClick(option)}>
               {label}
             </Button>
           </BtnItem>

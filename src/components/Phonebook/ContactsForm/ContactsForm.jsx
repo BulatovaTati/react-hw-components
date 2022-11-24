@@ -4,13 +4,13 @@ import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
-  Button,
   ErrorMsg,
   FormInner,
   FormWrapper,
   Input,
   Label,
 } from './ContactsForm.styled';
+import { Button } from 'components/Feedback/FeedbackOptions/FeedbackOptions.styled';
 
 const nameRegExp = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 

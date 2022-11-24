@@ -4,14 +4,8 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px 20px;
-  background-color: #66abe7;
+  background-color: ${props => props.theme.colors.NavBGColor};
   border-radius: 10px;
-`;
-
-export const Title = styled.div`
-  font-size: 30px;
-  color: #fff;
-  font-weight: 700;
 `;
 
 export const Button = styled.button`
@@ -20,21 +14,24 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ isOpen }) => (isOpen ? '#fff' : '#000')};
+
+  color: ${({ isOpen }) => (isOpen ? 'orange' : '#fff')};
   font-size: 30px;
   border: none;
   border-radius: 50%;
   border: 1px solid;
-  border-color: ${({ isOpen }) => (isOpen ? '#fff' : '#000')};
+
+  border-color: ${({ isOpen }) => (isOpen ? 'orange' : '#fff')};
   background-color: transparent;
   transition: all 100ms linear;
   cursor: pointer;
+
   :not(:last-child) {
     margin-left: auto;
     margin-right: 10px;
   }
   :hover {
-    color: #fff;
-    border-color: #fff;
+    color: ${props => props.theme.colors.activeTextColor};
+    border-color: ${props => props.theme.colors.activeTextColor};
   }
 `;

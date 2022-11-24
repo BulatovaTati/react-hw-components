@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import {
-  Section,
-  Statistics,
-  Notification,
-  FeedbackOptions,
-} from 'components/Feedback';
+import { Section, Statistics, FeedbackOptions } from 'components/Feedback';
+import { Notification } from 'common/Notification/Notification';
 
 class Feedback extends Component {
   state = {
@@ -24,16 +20,17 @@ class Feedback extends Component {
     return values.reduce((acc, value) => acc + value, 0);
   };
 
-  countPositiveFeedbackPercentage = (total, good) => {
-    const percentage = Math.round((good / total) * 100);
+  countPositiveFeedbackPercentage = (totalFeed, good) => {
+    const percentage = Math.round((good / totalFeed) * 100);
     return percentage;
   };
 
   render() {
     const { good, neutral, bad } = this.state;
-    const total = this.countTotalFeedback();
+
+    const totalFeed = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage(
-      total,
+      totalFeed,
       good
     );
     const options = Object.keys(this.state);
@@ -45,12 +42,12 @@ class Feedback extends Component {
         </Section>
 
         <Section title="Statistics">
-          {total > 0 ? (
+          {totalFeed > 0 ? (
             <Statistics
               good={good}
               neutral={neutral}
               bad={bad}
-              total={total}
+              totalFeed={totalFeed}
               positivePercentage={positivePercentage}
             />
           ) : (
