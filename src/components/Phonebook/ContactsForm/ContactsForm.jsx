@@ -10,7 +10,7 @@ import {
   Input,
   Label,
 } from './ContactsForm.styled';
-import { Button } from 'components/Feedback/FeedbackOptions/FeedbackOptions.styled';
+import { Button } from './ContactsForm.styled';
 
 const nameRegExp = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
