@@ -1,17 +1,15 @@
 import React from 'react';
-import { Nav, NavLink, NavMenu } from './NavBar.styled';
+import { Header, NavLink } from './NavBar.styled';
 
 const Navbar = () => {
   return (
-    <>
-      <Nav>
-        <NavMenu>
-          <NavLink to="/">Home</NavLink>
-          {/* <NavLink to="/feedback">Feedback</NavLink> */}
-          <NavLink to="/phonebook">Phonebook</NavLink>
-        </NavMenu>
-      </Nav>
-    </>
+    <Header>
+      <nav>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/image-finder">Image Finder</NavLink>
+        <NavLink to="/phonebook">Phonebook</NavLink>
+      </nav>
+    </Header>
   );
 };
 

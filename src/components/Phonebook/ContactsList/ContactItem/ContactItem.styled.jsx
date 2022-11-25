@@ -21,16 +21,13 @@ export const Contact = styled.p`
 
 export const IconUser = styled(RiUserFollowLine)`
   padding: ${props => props.theme.space[2]}px;
-  border: 1px solid ${props => props.theme.colors.bcgBtn};
+  border: 1px solid ${props => props.theme.colors.NavBGColor};
   border-radius: 50%;
   margin-right: ${props => props.theme.space[3]}px;
-  color: ${props => props.theme.colors.iconColor};
+  color: ${props => props.theme.colors.NavBGColor};
   cursor: pointer;
   transition: color 250ms linear;
-
-  :hover {
-    color: ${props => props.theme.colors.whiteTextColor};
-  }
+  font-size: 26px;
 `;
 export const Button = styled.button`
   width: 36px;

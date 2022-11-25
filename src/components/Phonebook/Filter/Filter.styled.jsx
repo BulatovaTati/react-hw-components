@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const FilterWrapper = styled.div`
   padding: 20px 40px;
   background-color: ${props => props.theme.colors.bcgTable};
-  border-bottom: 2px solid ${props => props.theme.colors.borderBot};
+  border-bottom: 2px solid ${props => props.theme.colors.NavBGColor};
   text-align: center;
   border-radius: 10px;
 `;
@@ -23,6 +23,6 @@ export const Input = styled.input`
 
   :hover,
   :focus {
-    border-color: ${props => props.theme.colors.borderBot};
+    border-color: ${props => props.theme.colors.NavBGColor};
   }
 `;

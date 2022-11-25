@@ -1,10 +1,11 @@
-import { Button, Wrapper, Title } from './Menu.styled';
+import { Button, Wrapper } from './Menu.styled';
 import { RiUserSearchLine, RiUserAddLine } from 'react-icons/ri';
+import { TitleEl } from 'common/Title/Title';
 
 const Menu = ({ toggle, isOpenFilter, isOpenForm }) => {
   return (
     <Wrapper>
-      <Title>PHONEBOOK</Title>
+      <TitleEl str="Phonebook" color="white" />
 
       <Button
         onClick={() => toggle('isOpenForm')}

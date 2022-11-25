@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { ContactItem } from '../index';
-import { Empty, Title, Wrapper } from './ContactsList.styled';
+import { Title, Wrapper } from './ContactsList.styled';
+import { Notification } from 'common/Notification/Notification';
 
 const EntryContainer = ({ children, ...props }) => {
   const nodeRef = React.useRef(null);
@@ -33,7 +34,7 @@ const ContactsList = ({ contacts, deleteHandler }) => {
           </TransitionGroup>
         </ul>
       ) : (
-        <Empty>Contact list is empty</Empty>
+        <Notification message="Contact list is empty" />
       )}
     </Wrapper>
   );
