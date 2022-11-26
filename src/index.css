@@ -30,7 +30,6 @@ ul {
 
 .item-enter {
   opacity: 0;
-
   transform: translateX(-50%);
 }
 .item-enter-active {
