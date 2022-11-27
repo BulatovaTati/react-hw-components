@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 import { Overlay, ModalW } from './Modal.styled';
+
 const modalRoot = document.querySelector('#modal-root');
 
 class Modal extends Component {
@@ -14,23 +16,33 @@ class Modal extends Component {
 
   onKeyDown = e => {
     if (e.code === 'Escape') {
-      this.props.onClose();
+      this.props.onModalClick();
     }
   };
 
   onBackdropClick = e => {
     if (e.currentTarget === e.target) {
-      this.props.onClose();
+      this.props.onModalClick();
     }
   };
 
   render() {
+    const { largeImage, alt } = this.props;
+
     return createPortal(
       <Overlay onClick={this.onBackdropClick}>
-        <ModalW>{this.props.children}</ModalW>
+        <ModalW>
+          <img src={largeImage} alt={alt} />
+        </ModalW>
       </Overlay>,
       modalRoot
     );
   }
 }
 export default Modal;
+
+Modal.prototypes = {
+  alt: PropTypes.string.isRequired,
+  largeImage: PropTypes.string.isRequired,
+  onModalClick: PropTypes.func.isRequired,
+};

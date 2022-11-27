@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { FcSearch } from 'react-icons/fc';
+import { toast } from 'react-toastify';
 
 import {
   SearchSticky,
@@ -20,9 +21,11 @@ class Searchbar extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
+
     if (this.state.query.trim() === '') {
-      return alert('Please, enter image name.');
+      return toast.warn('Oops... Enter the title');
     }
+
     this.props.onSearch(this.state.query);
 
     this.setState({ query: '' });
@@ -38,11 +41,11 @@ class Searchbar extends Component {
           </SearchFormButton>
 
           <SearchFormInput
-            name="input"
             type="text"
             autocomplete="off"
             autoFocus
             placeholder="Search images and photos"
+            value={this.state.query}
             onChange={this.onSearchQuery}
           />
         </SearchForm>

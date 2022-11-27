@@ -1,16 +1,21 @@
-import { RotatingLines } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import { SectionLoader } from './Loader.styled';
 
-export const Loader = () => {
+const Loader = () => {
   return (
     <SectionLoader>
-      <RotatingLines
-        strokeColor="grey"
-        strokeWidth="4"
-        animationDuration="0.75"
-        width="96"
+      <ThreeDots
+        height="150"
+        width="150"
+        radius="9"
+        color="#262626"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
         visible={true}
       />
     </SectionLoader>
   );
 };
+
+export default Loader;

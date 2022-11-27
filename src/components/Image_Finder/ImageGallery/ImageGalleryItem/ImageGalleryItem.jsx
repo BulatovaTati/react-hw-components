@@ -1,26 +1,21 @@
 import propTypes from 'prop-types';
 import { GalleryItem, GalleryImage } from './ImageGalleryItem.styled';
 
-const ImageGalleryItem = ({
-  webImage,
-  largeImage,
-  tags,
-  onClose,
-  handleModalImage,
-  handleModalAlt,
-}) => {
-  return (
-    <GalleryItem>
-      <GalleryImage src={webImage} alt={tags} onClose={onClose} />
-    </GalleryItem>
-  );
-};
+const ImageGalleryItem = ({ url, largeImageURL, tags, openModal }) => (
+  <GalleryItem>
+    <GalleryImage
+      src={url}
+      alt={tags}
+      onClick={() => openModal(largeImageURL, tags)}
+    />
+  </GalleryItem>
+);
 
 ImageGalleryItem.propTypes = {
-  webImage: propTypes.string.isRequired,
-  largeImage: propTypes.string.isRequired,
+  url: propTypes.string.isRequired,
+  largeImageURL: propTypes.string.isRequired,
   tags: propTypes.string.isRequired,
-  onClick: propTypes.func.isRequired,
+  openModal: propTypes.func.isRequired,
 };
 
 export default ImageGalleryItem;
