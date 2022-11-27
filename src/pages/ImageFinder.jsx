@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import FetchImages from 'components/API/Fetch';
+
 import Searchbar from 'components/Image_Finder/Searchbar/Searchbar';
 import { Loader } from 'components/Image_Finder/Loader/Loader';
 import ImageGallery from 'components/Image_Finder/ImageGallery/ImageGallery';
@@ -62,7 +63,7 @@ export default class App extends Component {
     }
   }
 
-  handleFormSubmit = query => {
+  getInputValue = query => {
     if (query === this.state.query) {
       return;
     }
@@ -89,11 +90,11 @@ export default class App extends Component {
     const { images, status, showModal, modalImage, imageAlt, showButton } =
       this.state;
 
-    const { handleFormSubmit, toggleModal, loadMoreImages } = this;
+    const { getInputValue, toggleModal, loadMoreImages } = this;
 
     return (
       <>
-        <Searchbar onSubmit={handleFormSubmit} />
+        <Searchbar onSearch={getInputValue} />
 
         {status === 'idle' && <h2>Search something!</h2>}
 

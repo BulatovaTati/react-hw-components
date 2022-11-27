@@ -11,29 +11,28 @@ import {
 
 class Searchbar extends Component {
   state = {
-    searchImage: '',
+    query: '',
   };
 
   onImageChange = e => {
-    this.setState({ searchImage: e.currentTarget.value.toLowerCase() });
+    this.setState({ query: e.currentTarget.value.toLowerCase() });
   };
 
-  onImagesSubmit = e => {
+  handleFormSubmit = e => {
     e.preventDefault();
-
-    if (this.state.searchImage.trim() === '') {
+    if (this.state.query.trim() === '') {
       return alert('Please, enter image name.');
     }
+    console.log(this.state.query);
+    this.props.onSearch(this.state.query);
 
-    this.props.onSubmit(this.state.searchImage);
-
-    this.setState({ searchImage: '' });
+    this.setState({ query: '' });
   };
 
   render() {
     return (
       <SearchSticky>
-        <SearchForm>
+        <SearchForm onSubmit={this.handleFormSubmit}>
           <SearchFormButton type="submit">
             <FcSearch size={30} />
             <SearchFormButtonLabel>Search</SearchFormButtonLabel>
