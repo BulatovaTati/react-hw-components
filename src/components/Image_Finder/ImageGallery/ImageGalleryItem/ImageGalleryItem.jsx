@@ -1,14 +1,17 @@
 import propTypes from 'prop-types';
 import { GalleryItem, GalleryImage } from './ImageGalleryItem.styled';
 
-const ImageGalleryItem = ({ webImage, largeImage, tags, onClick }) => {
+const ImageGalleryItem = ({
+  webImage,
+  largeImage,
+  tags,
+  onClose,
+  handleModalImage,
+  handleModalAlt,
+}) => {
   return (
     <GalleryItem>
-      <GalleryImage
-        src={webImage}
-        alt={tags}
-        onClick={() => onClick(largeImage)}
-      />
+      <GalleryImage src={webImage} alt={tags} onClose={onClose} />
     </GalleryItem>
   );
 };

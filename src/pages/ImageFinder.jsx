@@ -25,6 +25,7 @@ export default class App extends Component {
     showModal: false,
     status: Status.IDLE,
     modalImage: '',
+    imageAlt: '',
   };
 
   componentDidUpdate(_, prevState) {
@@ -57,9 +58,7 @@ export default class App extends Component {
               this.state.page < Math.ceil(images.total / 12) ? true : false,
           });
         })
-
-        .then(console.log(this.state.images))
-        .catch(error => console.log(error));
+        .catch(console.log);
     }
   }
 
@@ -82,6 +81,10 @@ export default class App extends Component {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
+  handleModalImage = event => {
+    this.setState({ modalImage: event });
+  };
+
   toggleModal = () => {
     this.setState(({ showModal }) => ({ showModal: !showModal }));
   };
@@ -89,8 +92,15 @@ export default class App extends Component {
   render() {
     const { images, status, showModal, modalImage, imageAlt, showButton } =
       this.state;
+    console.log('showModal: ', showModal);
 
-    const { getInputValue, toggleModal, loadMoreImages } = this;
+    const {
+      getInputValue,
+      toggleModal,
+      loadMoreImages,
+      handleModalImage,
+      handleModalAlt,
+    } = this;
 
     return (
       <>
@@ -101,7 +111,12 @@ export default class App extends Component {
         {status === 'pending' && <Loader />}
 
         {images.length > 0 && (
-          <ImageGallery showModal={toggleModal} images={images} />
+          <ImageGallery
+            images={images}
+            onClick={toggleModal}
+            handleModalImage={handleModalImage}
+            handleModalAlt={handleModalAlt}
+          />
         )}
 
         {showButton && <Button onClick={loadMoreImages} />}

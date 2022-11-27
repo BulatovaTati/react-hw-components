@@ -2,9 +2,14 @@ import propTypes from 'prop-types';
 import { ImageGalleryList } from './ImageGallery.styled';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 
-const ImageGallery = ({ images, onClick }) => {
+const ImageGallery = ({
+  images,
+  onClick,
+  handleModalImage,
+  handleModalAlt,
+}) => {
   return (
-    <div>
+    <>
       <ImageGalleryList>
         {images.map(({ id, webformatURL, largeImageURL, tags }) => {
           return (
@@ -14,11 +19,13 @@ const ImageGallery = ({ images, onClick }) => {
               largeImage={largeImageURL}
               tags={tags}
               onClick={onClick}
+              handleModalImage={handleModalImage}
+              handleModalAlt={handleModalAlt}
             />
           );
         })}
       </ImageGalleryList>
-    </div>
+    </>
   );
 };
 export default ImageGallery;

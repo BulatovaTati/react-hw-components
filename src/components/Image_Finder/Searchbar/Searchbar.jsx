@@ -14,7 +14,7 @@ class Searchbar extends Component {
     query: '',
   };
 
-  onImageChange = e => {
+  onSearchQuery = e => {
     this.setState({ query: e.currentTarget.value.toLowerCase() });
   };
 
@@ -23,7 +23,6 @@ class Searchbar extends Component {
     if (this.state.query.trim() === '') {
       return alert('Please, enter image name.');
     }
-    console.log(this.state.query);
     this.props.onSearch(this.state.query);
 
     this.setState({ query: '' });
@@ -39,11 +38,12 @@ class Searchbar extends Component {
           </SearchFormButton>
 
           <SearchFormInput
-            onSubmit={this.onImageChange}
+            name="input"
             type="text"
             autocomplete="off"
             autoFocus
             placeholder="Search images and photos"
+            onChange={this.onSearchQuery}
           />
         </SearchForm>
       </SearchSticky>
