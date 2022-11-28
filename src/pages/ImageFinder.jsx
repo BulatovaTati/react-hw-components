@@ -25,7 +25,7 @@ export default class App extends Component {
     showModal: false,
     error: null,
     status: Status.IDLE,
-    largeImageURL: '',
+    largeImage: '',
     tags: '',
   };
 
@@ -91,10 +91,10 @@ export default class App extends Component {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
-  onOpenModal = (largeImageURL, tags) => {
+  onOpenModal = (largeImage, tags) => {
     this.toggleModal();
     this.setState({
-      largeImageURL,
+      largeImage,
       tags,
     });
   };
@@ -104,7 +104,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { images, status, showModal, largeImageURL, tags, showButton } =
+    const { images, status, showModal, largeImage, tags, showButton } =
       this.state;
 
     const { getInputValue, toggleModal, loadMoreImages, onOpenModal } = this;
@@ -126,7 +126,7 @@ export default class App extends Component {
         {showModal && (
           <Modal
             onModalClick={toggleModal}
-            largeImage={largeImageURL}
+            largeImage={largeImage}
             alt={tags}
           />
         )}
