@@ -15,26 +15,32 @@ class Searchbar extends Component {
     query: '',
   };
 
-  onSearchQuery = e => {
+  // Gets the state updated
+  handleChange = e => {
     this.setState({ query: e.currentTarget.value.toLowerCase() });
   };
 
-  handleFormSubmit = e => {
+  // Is triggered when the form is submitted
+  handleSubmit = e => {
     e.preventDefault();
 
     if (this.state.query.trim() === '') {
       return toast.warn('Oops... Enter the title');
     }
 
+    // Prop that is passed to the form to be called upon submission
     this.props.onSearch(this.state.query);
 
     this.setState({ query: '' });
   };
 
   render() {
+    const { handleSubmit, handleChange } = this;
+    const { query } = this.state;
+
     return (
       <SearchSticky>
-        <SearchForm onSubmit={this.handleFormSubmit}>
+        <SearchForm onSubmit={handleSubmit}>
           <SearchFormButton type="submit">
             <FcSearch size={30} />
             <SearchFormButtonLabel>Search</SearchFormButtonLabel>
@@ -42,11 +48,12 @@ class Searchbar extends Component {
 
           <SearchFormInput
             type="text"
+            name="query"
             autocomplete="off"
             autoFocus
             placeholder="Search images and photos"
-            value={this.state.query}
-            onChange={this.onSearchQuery}
+            value={query}
+            onChange={handleChange}
           />
         </SearchForm>
       </SearchSticky>
