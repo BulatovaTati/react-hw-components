@@ -41,6 +41,7 @@ export default class App extends Component {
       this.renderGallery();
     }
   }
+
   renderGallery = async () => {
     const { query, page } = this.state;
 
