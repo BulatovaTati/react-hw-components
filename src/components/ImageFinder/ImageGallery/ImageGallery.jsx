@@ -5,15 +5,17 @@ import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 const ImageGallery = ({ images, onOpenModal }) => {
   return (
     <ImageGalleryList>
-      {images.map(({ id, webformatURL, largeImageURL, tags }) => (
-        <ImageGalleryItem
-          key={id}
-          url={webformatURL}
-          largeImageURL={largeImageURL}
-          tags={tags}
-          openModal={onOpenModal}
-        />
-      ))}
+      {images.map(
+        ({ id, webformatURL: url, largeImageURL: largeUrl, tags }) => (
+          <ImageGalleryItem
+            key={id}
+            url={url}
+            largeUrl={largeUrl}
+            tags={tags}
+            onOpenModal={onOpenModal}
+          />
+        )
+      )}
     </ImageGalleryList>
   );
 };
