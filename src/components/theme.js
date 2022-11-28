@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   colors: {
     NavBGColor: '#262626',
     mainTextColor: '#000',
@@ -30,3 +30,5 @@ export const theme = {
     bold: 700,
   },
 };
+
+export default theme;
