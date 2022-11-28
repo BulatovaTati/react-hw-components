@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import 'modern-normalize';
 
 import App from 'components/App';
-import { theme } from 'components/theme';
+import theme from 'components/theme';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
