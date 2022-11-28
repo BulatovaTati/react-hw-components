@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter basename="/">
       <ThemeProvider theme={theme}>
         <App />
-      </ThemeProvider>{' '}
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
