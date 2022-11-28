@@ -91,7 +91,7 @@ export default class App extends Component {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
-  openModal = (largeImageURL, tags) => {
+  onOpenModal = (largeImageURL, tags) => {
     this.toggleModal();
     this.setState({
       largeImageURL,
@@ -107,7 +107,7 @@ export default class App extends Component {
     const { images, status, showModal, largeImageURL, tags, showButton } =
       this.state;
 
-    const { getInputValue, toggleModal, loadMoreImages, openModal } = this;
+    const { getInputValue, toggleModal, loadMoreImages, onOpenModal } = this;
 
     return (
       <>
@@ -118,7 +118,7 @@ export default class App extends Component {
         <ToastContainer autoClose={2000} />
 
         {images.length > 0 && (
-          <ImageGallery images={images} onOpenModal={openModal} />
+          <ImageGallery images={images} onOpenModal={onOpenModal} />
         )}
 
         {showButton && <Button onClick={loadMoreImages} />}
