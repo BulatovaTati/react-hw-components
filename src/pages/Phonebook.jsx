@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { ContactsForm, Menu, ContactsList, Filter } from 'components/Phonebook';
-import { Container } from 'components/Phonebook/Phonebook';
+import { Container } from 'components/Phonebook/Phonebook.styled';
 
 class Phonebook extends Component {
   state = {
