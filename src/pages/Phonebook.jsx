@@ -41,6 +41,13 @@ class Phonebook extends Component {
     }));
   };
 
+  visibleContacts = () => {
+  const {contacts} = this.state;
+  return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }
+
   componentDidMount() {
     const getContacts = JSON.parse(localStorage.getItem('contacts'));
     if (getContacts) {
@@ -55,30 +62,29 @@ class Phonebook extends Component {
   }
 
   render() {
+    const {visibleContacts, toggle, addContact, deleteContact, onSearch} = this;
     const { filter, contacts, isOpenForm, isOpenFilter } = this.state;
-    const filteredContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+    const filteredContacts = visibleContacts();
 
     return (
       <Container>
         <Menu
           isOpenForm={isOpenForm}
           isOpenFilter={isOpenFilter}
-          toggle={this.toggle}
+          toggle={toggle}
         />
         {isOpenForm && (
           <ContactsForm
-            toggle={this.toggle}
+            toggle={toggle}
             contacts={contacts}
-            addContact={this.addContact}
+            addContact={addContact}
           />
         )}
 
-        {isOpenFilter && <Filter value={filter} onSearch={this.onSearch} />}
+        {isOpenFilter && <Filter value={filter} onSearch={onSearch} />}
 
         <ContactsList
-          deleteHandler={this.deleteContact}
+          deleteHandler={deleteContact}
           contacts={filteredContacts}
         />
       </Container>
