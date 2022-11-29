@@ -42,11 +42,11 @@ class Phonebook extends Component {
   };
 
   visibleContacts = () => {
-  const {contacts} = this.state;
-  return contacts.filter(contact =>
+    const { contacts, filter } = this.state;
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
-  }
+  };
 
   componentDidMount() {
     const getContacts = JSON.parse(localStorage.getItem('contacts'));
@@ -62,7 +62,8 @@ class Phonebook extends Component {
   }
 
   render() {
-    const {visibleContacts, toggle, addContact, deleteContact, onSearch} = this;
+    const { visibleContacts, toggle, addContact, deleteContact, onSearch } =
+      this;
     const { filter, contacts, isOpenForm, isOpenFilter } = this.state;
     const filteredContacts = visibleContacts();
 
