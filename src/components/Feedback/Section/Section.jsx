@@ -6,7 +6,6 @@ const Section = ({ title, children }) => {
   return (
     <PageSection>
       {title && <TitleEl str={title} />}
-
       {children}
     </PageSection>
   );

@@ -30,6 +30,8 @@ class Modal extends Component {
     const { largeImage, alt } = this.props;
 
     return createPortal(
+      // React does *not* create a new div. It renders the children into `domNode`.
+      // `domNode` is any valid DOM node, regardless of its location in the DOM.
       <Overlay onClick={this.onBackdropClick}>
         <ModalW>
           <img src={largeImage} alt={alt} />

@@ -90,6 +90,7 @@ export default class App extends Component {
   };
 
   loadMoreImages = () => {
+    // updating Parent's state
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 

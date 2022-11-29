@@ -10,6 +10,9 @@ const EntryContainer = ({ children, ...props }) => {
   const nodeRef = React.useRef(null);
   return (
     <CSSTransition {...props} timeout={500} classNames="item" nodeRef={nodeRef}>
+      {/* When the in prop is set to true, the child component will first receive
+      the class example-enter (item), then the example-enter-active (item+active) will be added in
+      the next tick.  */}
       <div ref={nodeRef}>{children}</div>
     </CSSTransition>
   );
