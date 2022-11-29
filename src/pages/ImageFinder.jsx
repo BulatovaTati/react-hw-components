@@ -3,11 +3,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import FetchImages from 'components/API/Fetch';
-import Searchbar from 'components/ImageFinder/Searchbar/Searchbar';
-import Loader from 'components/ImageFinder/Loader/Loader';
-import ImageGallery from 'components/ImageFinder/ImageGallery/ImageGallery';
-import Button from 'components/ImageFinder/Button/Button';
-import Modal from 'components/ImageFinder/Modal/Modal';
+import {
+  Searchbar,
+  Loader,
+  ImageGallery,
+  Button,
+  Modal,
+} from '../components/ImageFinder';
 
 const Status = {
   IDLE: 'idle',

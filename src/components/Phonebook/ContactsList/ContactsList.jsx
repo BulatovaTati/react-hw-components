@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { ContactItem } from '../index';
-import { Title, Wrapper } from './ContactsList.styled';
 import { Notification } from 'common/Notification/Notification';
+
+import ContactItem from './ContactItem/ContactItem';
+import { Title, Wrapper } from './ContactsList.styled';
 
 const EntryContainer = ({ children, ...props }) => {
   const nodeRef = React.useRef(null);
