@@ -1,19 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import 'modern-normalize';
-
-import App from 'components/App';
-import theme from 'components/theme';
-import './index.css';
+// import { App } from 'components/example-1/App';
+// import { App } from 'components/example-2/App';
+import { App } from 'components/example-3/App';
+import { GlobalStyle } from 'components/GlobalStyle';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/">
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>
+    <App />
+    <GlobalStyle />
   </React.StrictMode>
 );

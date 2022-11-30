@@ -2,7 +2,7 @@ name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches: [goit-react-hw-03]
+    branches: [goit-react-own]
 
 jobs:
   build-and-deploy:
