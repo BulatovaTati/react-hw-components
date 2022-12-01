@@ -1,10 +1,18 @@
 import { CardWrapper, Image, Label } from 'components/Sticker.styled';
 
-export const Sticker = ({ sticker: { img, label } }) => {
+export const Sticker = ({
+  sticker: { id, img, label },
+  initialIdx,
+  onClick,
+  onDelete,
+}) => {
   return (
-    <CardWrapper>
-      <Image src={img} alt={label} />
-      <Label>{label}</Label>
-    </CardWrapper>
+    <>
+      <CardWrapper onClick={onClick}>
+        <Image src={img} alt={label} />
+        {initialIdx && <Label>{label}</Label>}
+        <button onClick={() => onDelete(id)}>Delete</button>
+      </CardWrapper>
+    </>
   );
 };

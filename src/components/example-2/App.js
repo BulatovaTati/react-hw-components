@@ -1,6 +1,10 @@
 import { Layout } from 'components/Layout';
 import { StickerList } from './StickerList';
+<<<<<<< Updated upstream
 import stickers from '../../stickers.json';
+=======
+import stickers from './stickers.json';
+>>>>>>> Stashed changes
 
 /**
  * Может быть открыт только один стикер, остальные закрыты.
