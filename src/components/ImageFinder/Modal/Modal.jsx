@@ -1,46 +1,40 @@
-import { Component } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { Overlay, ModalW } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener('keydown', this.onKeyDown);
-  }
+const Modal = ({ largeImage, alt, onModalClick }) => {
+  useEffect(() => {
+    const onKeyDown = e => {
+      if (e.code === 'Escape') {
+        onModalClick();
+      }
+    };
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.onKeyDown);
-  }
+    window.addEventListener('keydown', onKeyDown);
 
-  onKeyDown = e => {
-    if (e.code === 'Escape') {
-      this.props.onModalClick();
-    }
-  };
+    return window.removeEventListener('keydown', onKeyDown);
+  }, [onModalClick]);
 
-  onBackdropClick = e => {
+  const onBackdropClick = e => {
     if (e.currentTarget === e.target) {
-      this.props.onModalClick();
+      onModalClick();
     }
   };
 
-  render() {
-    const { largeImage, alt } = this.props;
-
-    return createPortal(
-      // React does *not* create a new div. It renders the children into `domNode`.
-      // `domNode` is any valid DOM node, regardless of its location in the DOM.
-      <Overlay onClick={this.onBackdropClick}>
-        <ModalW>
-          <img src={largeImage} alt={alt} />
-        </ModalW>
-      </Overlay>,
-      modalRoot
-    );
-  }
-}
+  return createPortal(
+    // React does *not* create a new div. It renders the children into `domNode`.
+    // `domNode` is any valid DOM node, regardless of its location in the DOM.
+    <Overlay onClick={onBackdropClick}>
+      <ModalW>
+        <img src={largeImage} alt={alt} />
+      </ModalW>
+    </Overlay>,
+    modalRoot
+  );
+};
 export default Modal;
 
 Modal.prototypes = {
