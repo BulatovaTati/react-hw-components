@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/feedback" element={<FeedbackPage />} />
+        {/* <Route path="/feedback" element={<FeedbackPage />} /> */}
         <Route path="/image-finder" element={<ImageFinder />} />
         <Route path="/phonebook" element={<Phonebook />} />
       </Routes>
