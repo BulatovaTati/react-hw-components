@@ -58,9 +58,74 @@ const Feedback = () => {
     </main>
   );
 };
+
 export default Feedback;
 
 // !V2
+
+// const reducer = (state, action) => ({
+//   ...state,
+//   [action.type]: state[action.type] + action.payload,
+// });
+
+// const Feedback = () => {
+//   const [state, dispatch] = useReducer(reducer, {
+//     good: 0,
+//     neutral: 0,
+//     bad: 0,
+//   });
+
+//   const handleClick = name => () => {
+//     dispatch({ type: name, payload: 1 });
+//   };
+
+//   const countTotalFeedBack = () =>
+//     Object.values(state).reduce((acc, v) => acc + v, 0);
+
+//   function countPositiveFeedBackPercentage() {
+//     const totalFeedback = countTotalFeedBack();
+//     const positiveFeedbackCount = Object.entries(state).reduce(
+//       (summ, [feedbackName, value]) =>
+//         feedbackName === 'good' ? summ + value : summ,
+//       0
+//     );
+
+//     const percentage =
+//       positiveFeedbackCount > 0
+//         ? Math.round((positiveFeedbackCount / totalFeedback) * 100)
+//         : 0;
+
+//     return percentage;
+//   }
+
+//   const total = countTotalFeedBack();
+
+//   const positivePercentage = countPositiveFeedBackPercentage();
+//   const options = Object.keys(state);
+//   const data = Object.entries(state);
+
+//   return (
+//     <main>
+//       <Section title="Please leave feedback">
+//         <FeedbackOptions options={options} onLeaveFeedback={handleClick} />
+//       </Section>
+//       <Section title="Statistics">
+//         {total > 0 && (
+//           <Statistics
+//             options={data}
+//             totalFeed={total}
+//             positivePercentage={positivePercentage}
+//           />
+//         )}
+
+//         {!total && <Notification message="There is no feedback" />}
+//       </Section>
+//     </main>
+//   );
+// };
+
+// ! V3
+
 // const Feedback = () => {
 //   const [good, setGood] = useState(0);
 //   const [neutral, setNeutral] = useState(0);

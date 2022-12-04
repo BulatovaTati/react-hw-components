@@ -68,3 +68,45 @@ Statistics.propTypes = {
   totalFeed: PropTypes.number,
   positivePercentage: PropTypes.number,
 };
+
+// ! V2
+// const Statistics = ({ options, totalFeed, positivePercentage }) => {
+//   const starArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+//   const totalPositiveStars = Math.floor(positivePercentage / 10);
+
+//   return (
+//     <List>
+//       {options.map(([name, value]) => (
+//         <Item key={name}>
+//           <Text>
+//             {name}: {value}
+//           </Text>
+//         </Item>
+//       ))}
+//       <Item>
+//         <Text>Total: {totalFeed}</Text>
+//       </Item>
+//       <Item>
+//         <Text>Positive feedback: {positivePercentage} %</Text>
+//       </Item>
+//       <Item>
+//         <Stars>
+//           {starArr.map((_, idx) => (
+//             <IconContext.Provider
+//               key={idx}
+//               value={{
+//                 color: `${idx >= totalPositiveStars ? '#ccc' : 'orange'}`,
+//               }}
+//             >
+//               <AiFillStar />
+//             </IconContext.Provider>
+//           ))}
+
+//           <Stats>
+//             {totalPositiveStars} / {starArr.length}
+//           </Stats>
+//         </Stars>
+//       </Item>
+//     </List>
+//   );
+// };

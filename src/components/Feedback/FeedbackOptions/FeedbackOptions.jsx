@@ -23,3 +23,20 @@ FeedbackOptions.propTypes = {
   onLeaveFeedback: PropTypes.func,
   options: PropTypes.objectOf(PropTypes.number),
 };
+
+// ! V2
+// const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+//   return (
+//     <BtnList>
+//       {options.map((option, idx) => {
+//         return (
+//           <BtnItem key={idx}>
+//             <Button type="button" onClick={onLeaveFeedback(option)}>
+//               {option}
+//             </Button>
+//           </BtnItem>
+//         );
+//       })}
+//     </BtnList>
+//   );
+// };
