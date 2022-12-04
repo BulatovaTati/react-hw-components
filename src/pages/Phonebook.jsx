@@ -1,95 +1,78 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { ContactsForm, Menu, ContactsList, Filter } from 'components/Phonebook';
 import { Container } from 'components/Phonebook/Phonebook.styled';
+import useLocalStorage from 'hooks/useLocalStorage';
 
-class Phonebook extends Component {
-  state = {
-    contacts: [],
-    filter: '',
-    isOpenForm: false,
-    isOpenFilter: false,
-  };
+const Phonebook = () => {
+  const [contacts, setContacts] = useLocalStorage('contacts', []);
+  const [filter, setFilter] = useState('');
+  const [isOpenForm, setIsOpenForm] = useState(false);
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
 
-  onSearch = evt => {
+  const onSearch = evt => {
     const value = evt.target.value;
-    this.setState({ filter: value });
+    setFilter(value);
   };
 
-  addContact = data => {
-    this.setState(
-      prevState => ({
-        contacts: [...prevState.contacts, data],
-      }),
+  const addContact = data => {
+    setContacts(
+      prevState => {
+        return [data, ...prevState];
+      },
+
       Notify.success('Contact added')
     );
-    this.toggle('isOpenForm');
+    toggle('isOpenForm');
   };
 
-  deleteContact = id => {
-    this.setState(
-      prevState => ({
-        contacts: prevState.contacts.filter(contact => contact.id !== id),
-      }),
+  const deleteContact = id => {
+    setContacts(
+      prevState => prevState.filter(contact => contact.id !== id),
       Notify.success('Contact removed')
     );
   };
 
-  toggle = component => {
-    this.setState(prevState => ({
-      [component]: !prevState[component],
-    }));
+  const toggle = component => {
+    switch (component) {
+      case 'isOpenForm':
+        setIsOpenForm(f => !f);
+        break;
+      case 'isOpenFilter':
+        setIsOpenFilter(f => !f);
+        break;
+      default:
+        throw new Error(`Unknown component${component}`);
+    }
   };
 
-  visibleContacts = () => {
-    const { contacts, filter } = this.state;
-    return contacts.filter(contact =>
+  const visibleContacts = () =>
+    contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
-  };
 
-  componentDidMount() {
-    const getContacts = JSON.parse(localStorage.getItem('contacts'));
-    if (getContacts) {
-      this.setState({ contacts: getContacts });
-    }
-  }
+  const filteredContacts = visibleContacts();
 
-  componentDidUpdate(_, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
-  }
-
-  render() {
-    const { visibleContacts, toggle, addContact, deleteContact, onSearch } =
-      this;
-    const { filter, contacts, isOpenForm, isOpenFilter } = this.state;
-    const filteredContacts = visibleContacts();
-
-    return (
-      <Container>
-        <Menu
-          isOpenForm={isOpenForm}
-          isOpenFilter={isOpenFilter}
+  return (
+    <Container>
+      <Menu
+        isOpenForm={isOpenForm}
+        isOpenFilter={isOpenFilter}
+        toggle={toggle}
+      />
+      {isOpenForm && (
+        <ContactsForm
           toggle={toggle}
+          contacts={contacts}
+          addContact={addContact}
         />
-        {isOpenForm && (
-          <ContactsForm
-            toggle={toggle}
-            contacts={contacts}
-            addContact={addContact}
-          />
-        )}
+      )}
 
-        {isOpenFilter && <Filter value={filter} onSearch={onSearch} />}
+      {isOpenFilter && <Filter value={filter} onSearch={onSearch} />}
 
-        <ContactsList
-          deleteHandler={deleteContact}
-          contacts={filteredContacts}
-        />
-      </Container>
-    );
-  }
-}
+      <ContactsList deleteHandler={deleteContact} contacts={filteredContacts} />
+    </Container>
+  );
+};
+
 export default Phonebook;

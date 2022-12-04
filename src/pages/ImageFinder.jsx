@@ -90,4 +90,5 @@ const ImageFinder = () => {
     </>
   );
 };
+
 export default ImageFinder;
