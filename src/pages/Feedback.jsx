@@ -6,41 +6,58 @@ const Feedback = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
+  const [total, setTotal] = useState(0);
+  console.log('total: ', total);
 
-  const handleClick = key => {
-    this.setState(prevState => ({
-      [key]: prevState[key] + 1,
-    }));
+  const options = ['good', 'neutral', 'bad'];
+
+  const handleClick = option => {
+    switch (option) {
+      case 'good':
+        setGood(state => state + 1);
+        break;
+      case 'neutral':
+        setNeutral(state => state + 1);
+        break;
+
+      case 'bad':
+        setBad(state => state + 1);
+        break;
+
+      default:
+        throw new Error('Unknown option');
+    }
   };
 
-  const countTotalFeedback = () => {
-    const values = Object.values(this.state);
-    return values.reduce((acc, value) => acc + value, 0);
-  };
+  // const countTotalFeedback = () => {
+  //   const values = Object.values(this.state);
+  //   return values.reduce((acc, value) => acc + value, 0);
+  // };
 
   const countPositiveFeedbackPercentage = (totalFeed, good) => {
     const percentage = Math.round((good / totalFeed) * 100);
     return percentage;
   };
 
-  const totalFeed = countTotalFeedback();
-  const positivePercentage = countPositiveFeedbackPercentage(totalFeed, good);
-  // const options = Object.keys(this.state);
-
+  // const totalFeed = countTotalFeedback();
+  // const positivePercentage = countPositiveFeedbackPercentage(totalFeed, good);
+  // function getTotal(total) {
+  //   return setTotal(prev => prev);
+  // }
   return (
     <main>
       <Section title="Please leave feedback">
-        <FeedbackOptions options={[good, neutral, bad]} onClick={handleClick} />
+        <FeedbackOptions options={options} onLeaveFeedback={handleClick} />
       </Section>
 
       <Section title="Statistics">
-        {totalFeed > 0 ? (
+        {total > 0 ? (
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
-            totalFeed={totalFeed}
-            positivePercentage={positivePercentage}
+            // totalFeed={getTotal(total)}
+            // positivePercentage={positivePercentage}
           />
         ) : (
           <Notification message="There is no feedback" />

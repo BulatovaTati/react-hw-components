@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { BtnItem, BtnList, Button } from './FeedbackOptions.styled';
 
-const FeedbackOptions = ({ options, onClick }) => {
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <BtnList>
       {options.map((option, index) => {
@@ -11,7 +11,7 @@ const FeedbackOptions = ({ options, onClick }) => {
 
         return (
           <BtnItem key={index}>
-            <Button type="button" onClick={() => onClick(option)}>
+            <Button type="button" onClick={() => onLeaveFeedback(option)}>
               {label}
             </Button>
           </BtnItem>

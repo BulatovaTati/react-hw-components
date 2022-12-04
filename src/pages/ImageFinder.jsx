@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import FetchImages from 'components/API/Fetch';
 import {
   Searchbar,
@@ -18,122 +17,77 @@ const Status = {
   REJECTED: 'rejected',
 };
 
-export default class App extends Component {
-  state = {
-    images: [],
-    query: '',
-    page: 1,
-    showButton: false,
-    showModal: false,
-    error: null,
-    status: Status.IDLE,
-    largeImage: '',
-    tags: '',
-  };
+const ImageFinder = () => {
+  const [images, setImages] = useState([]);
+  const [largeImage, setLargeImage] = useState('');
+  const [tags, setTags] = useState('');
+  const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
+  const [status, setStatus] = useState(Status.IDLE);
+  const [isShowButton, setIsShowButton] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  componentDidUpdate(_, prevState) {
-    const prevQuery = prevState.query;
-    const nextQuery = this.state.query;
-
-    const prevPage = prevState.page;
-    const nextPage = this.state.page;
-
-    if (prevQuery !== nextQuery || prevPage !== nextPage) {
-      this.setState({ status: Status.PENDING });
-      this.renderGallery();
-    }
-  }
-
-  renderGallery = async () => {
-    const { query, page } = this.state;
-
+  const renderGallery = useCallback(async () => {
     try {
       const res = await FetchImages(query, page);
 
-      if (res.hits.length < 1) {
-        this.setState({
-          showButton: false,
-          status: Status.IDLE,
-        });
+      if (res.hits.length === 0) {
+        setIsShowButton(false);
+        setStatus(Status.IDLE);
         return toast.warn(
-          'Sorry, there are no im  ages matching your search query. Please try again.'
+          'Sorry, there are no images matching your search query. Please try again.'
         );
       }
 
-      this.setState(prevState => ({
-        images: [...prevState.images, ...res.hits],
-      }));
-
-      this.setState({
-        status: Status.RESOLVED,
-        showButton: this.state.page < Math.ceil(res.total / 12) ? true : false,
-      });
+      setImages(prev => [...prev, ...res.hits]);
+      setStatus(Status.RESOLVED);
+      setIsShowButton(page < Math.ceil(res.total / 12) ? true : false);
     } catch (error) {
-      this.setState({ error });
+      setStatus(Status.REJECTED);
       toast.error('Oops... Something went wrong');
     }
+  }, [page, query]);
+
+  useEffect(() => {
+    if (!query) return;
+
+    setStatus(Status.PENDING);
+    renderGallery();
+  }, [query, renderGallery]);
+
+  const getInputValue = newQuery => {
+    if (newQuery === query) return;
+    setQuery(newQuery);
+    setImages([]);
+    setPage(1);
   };
 
-  getInputValue = query => {
-    if (query === this.state.query) {
-      return;
-    }
+  const toggleModal = () => setIsModalOpen(isOpen => !isOpen);
 
-    this.setState({
-      query,
-      page: 1,
-      images: [],
-      showButton: false,
-      showModal: false,
-      status: Status.IDLE,
-    });
+  const onOpenModal = (largeImage, tags) => {
+    toggleModal();
+    setLargeImage(largeImage);
+    setTags(tags);
   };
 
-  loadMoreImages = () => {
-    // updating Parent's state
-    this.setState(prevState => ({ page: prevState.page + 1 }));
-  };
+  return (
+    <>
+      <Searchbar onSearch={getInputValue} />
 
-  onOpenModal = (largeImage, tags) => {
-    this.toggleModal();
-    this.setState({
-      largeImage,
-      tags,
-    });
-  };
+      {status === Status.PENDING && <Loader />}
 
-  toggleModal = () => {
-    this.setState(({ showModal }) => ({ showModal: !showModal }));
-  };
+      {images.length > 0 && (
+        <ImageGallery images={images} onOpenModal={onOpenModal} />
+      )}
 
-  render() {
-    const { images, status, showModal, largeImage, tags, showButton } =
-      this.state;
+      {isShowButton && <Button onClick={() => setPage(page => page + 1)} />}
 
-    const { getInputValue, toggleModal, loadMoreImages, onOpenModal } = this;
+      {isModalOpen && (
+        <Modal onModalClick={toggleModal} largeImage={largeImage} alt={tags} />
+      )}
 
-    return (
-      <>
-        <Searchbar onSearch={getInputValue} />
-
-        {status === 'pending' && <Loader />}
-
-        <ToastContainer autoClose={2000} />
-
-        {images.length > 0 && (
-          <ImageGallery images={images} onOpenModal={onOpenModal} />
-        )}
-
-        {showButton && <Button onClick={loadMoreImages} />}
-
-        {showModal && (
-          <Modal
-            onModalClick={toggleModal}
-            largeImage={largeImage}
-            alt={tags}
-          />
-        )}
-      </>
-    );
-  }
-}
+      <ToastContainer autoClose={2000} />
+    </>
+  );
+};
+export default ImageFinder;

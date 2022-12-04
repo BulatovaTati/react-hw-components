@@ -13,11 +13,6 @@ import {
 const Searchbar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
-  // Gets the state updated
-  const handleChange = e => {
-    setQuery(e.currentTarget.value.toLowerCase());
-  };
-
   // Is triggered when the form is submitted
   const handleSubmit = e => {
     e.preventDefault();
@@ -28,7 +23,6 @@ const Searchbar = ({ onSearch }) => {
 
     // Prop that is passed to the form to be called upon submission
     onSearch(query);
-
     setQuery('');
   };
 
@@ -47,7 +41,7 @@ const Searchbar = ({ onSearch }) => {
           autoFocus
           placeholder="Search images and photos"
           value={query}
-          onChange={handleChange}
+          onChange={e => setQuery(e.target.value.toLowerCase())}
         />
       </SearchForm>
     </SearchSticky>
