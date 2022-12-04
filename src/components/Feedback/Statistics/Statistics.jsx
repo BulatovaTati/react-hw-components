@@ -39,11 +39,11 @@ const Statistics = ({ good, neutral, bad, totalFeed, positivePercentage }) => {
       </Item>
       <Item>
         <Stars>
-          {starArr.map((_, index) => (
+          {starArr.map((_, idx) => (
             <IconContext.Provider
-              key={index}
+              key={idx}
               value={{
-                color: `${index >= totalPositiveStars ? '#ccc' : 'orange'}`,
+                color: `${idx >= totalPositiveStars ? '#ccc' : 'orange'}`,
               }}
             >
               <AiFillStar />
@@ -65,6 +65,6 @@ Statistics.propTypes = {
   good: PropTypes.number,
   neutral: PropTypes.number,
   bad: PropTypes.number,
-  total: PropTypes.number,
+  totalFeed: PropTypes.number,
   positivePercentage: PropTypes.number,
 };

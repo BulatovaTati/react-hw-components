@@ -22,6 +22,7 @@ export const Button = styled.button`
   transition: all 250ms linear;
   cursor: pointer;
   border-radius: 10px;
+  text-transform: capitalize;
 
   :hover {
     border: 2px solid ${props => props.theme.colors.NavBGColor};

@@ -4,15 +4,11 @@ import { BtnItem, BtnList, Button } from './FeedbackOptions.styled';
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <BtnList>
-      {options.map((option, index) => {
-        const label =
-          option.split('')[0].toUpperCase() +
-          option.split('').slice(1).join('');
-
+      {Object.keys(options).map((option, idx) => {
         return (
-          <BtnItem key={index}>
-            <Button type="button" onClick={() => onLeaveFeedback(option)}>
-              {label}
+          <BtnItem key={idx}>
+            <Button type="button" value={option} onClick={onLeaveFeedback}>
+              {option}
             </Button>
           </BtnItem>
         );
@@ -24,6 +20,6 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 export default FeedbackOptions;
 
 FeedbackOptions.propTypes = {
-  onClick: PropTypes.func,
-  options: PropTypes.arrayOf(PropTypes.string),
+  onLeaveFeedback: PropTypes.func,
+  options: PropTypes.objectOf(PropTypes.number),
 };
