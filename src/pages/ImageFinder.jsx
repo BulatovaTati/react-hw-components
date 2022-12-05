@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FetchImages from 'components/API/Fetch';
@@ -27,33 +27,33 @@ const ImageFinder = () => {
   const [isShowButton, setIsShowButton] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const renderGallery = useCallback(async () => {
-    try {
-      const res = await FetchImages(query, page);
-
-      if (res.hits.length === 0) {
-        setIsShowButton(false);
-        setStatus(Status.IDLE);
-        return toast.warn(
-          'Sorry, there are no images matching your search query. Please try again.'
-        );
-      }
-
-      setImages(prev => [...prev, ...res.hits]);
-      setStatus(Status.RESOLVED);
-      setIsShowButton(page < Math.ceil(res.total / 12) ? true : false);
-    } catch (error) {
-      setStatus(Status.REJECTED);
-      toast.error('Oops... Something went wrong');
-    }
-  }, [page, query]);
-
   useEffect(() => {
     if (!query) return;
 
     setStatus(Status.PENDING);
+    const renderGallery = async () => {
+      try {
+        const res = await FetchImages(query, page);
+
+        if (res.hits.length === 0) {
+          setIsShowButton(false);
+          setStatus(Status.IDLE);
+          return toast.warn(
+            'Sorry, there are no images matching your search query. Please try again.'
+          );
+        }
+
+        setImages(prev => [...prev, ...res.hits]);
+        setStatus(Status.RESOLVED);
+        setIsShowButton(page < Math.ceil(res.total / 12) ? true : false);
+      } catch (error) {
+        setStatus(Status.REJECTED);
+        toast.error('Oops... Something went wrong');
+      }
+    };
+
     renderGallery();
-  }, [query, renderGallery]);
+  }, [query, page]);
 
   const getInputValue = newQuery => {
     if (newQuery === query) return;
@@ -92,3 +92,31 @@ const ImageFinder = () => {
 };
 
 export default ImageFinder;
+
+// const renderGallery = useCallback(async () => {
+//     try {
+//       const res = await FetchImages(query, page);
+
+//       if (res.hits.length === 0) {
+//         setIsShowButton(false);
+//         setStatus(Status.IDLE);
+//         return toast.warn(
+//           'Sorry, there are no images matching your search query. Please try again.'
+//         );
+//       }
+
+//       setImages(prev => [...prev, ...res.hits]);
+//       setStatus(Status.RESOLVED);
+//       setIsShowButton(page < Math.ceil(res.total / 12) ? true : false);
+//     } catch (error) {
+//       setStatus(Status.REJECTED);
+//       toast.error('Oops... Something went wrong');
+//     }
+//   }, [page, query]);
+
+//   useEffect(() => {
+//     if (!query) return;
+
+//     setStatus(Status.PENDING);
+//     renderGallery();
+//   }, [query, renderGallery]);
