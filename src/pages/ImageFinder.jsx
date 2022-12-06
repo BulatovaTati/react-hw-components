@@ -7,7 +7,6 @@ import {
   Loader,
   ImageGallery,
   Button,
-  Modal,
 } from '../components/ImageFinder';
 
 const Status = {
@@ -19,13 +18,10 @@ const Status = {
 
 const ImageFinder = () => {
   const [images, setImages] = useState([]);
-  const [largeImage, setLargeImage] = useState('');
-  const [tags, setTags] = useState('');
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState(Status.IDLE);
   const [isShowButton, setIsShowButton] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (!query) return;
@@ -62,30 +58,12 @@ const ImageFinder = () => {
     setPage(1);
   };
 
-  const toggleModal = () => setIsModalOpen(isOpen => !isOpen);
-
-  const onOpenModal = (largeImage, tags) => {
-    toggleModal();
-    setLargeImage(largeImage);
-    setTags(tags);
-  };
-
   return (
     <>
       <Searchbar onSearch={getInputValue} />
-
       {status === Status.PENDING && <Loader />}
-
-      {images.length > 0 && (
-        <ImageGallery images={images} onOpenModal={onOpenModal} />
-      )}
-
+      {images.length > 0 && <ImageGallery images={images} />}
       {isShowButton && <Button onClick={() => setPage(page => page + 1)} />}
-
-      {isModalOpen && (
-        <Modal onModalClick={toggleModal} largeImage={largeImage} alt={tags} />
-      )}
-
       <ToastContainer autoClose={2000} />
     </>
   );

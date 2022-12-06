@@ -15,7 +15,7 @@ const Modal = ({ largeImage, alt, onModalClick }) => {
 
     window.addEventListener('keydown', onKeyDown);
 
-    return window.removeEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, [onModalClick]);
 
   const onBackdropClick = e => {
