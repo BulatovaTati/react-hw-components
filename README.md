@@ -1,5 +1,5 @@
 **Read in other languages: [Русский](README.md), [Polska](README.pl.md),
-[English](README.en.md), [Spanish](README.es.md).**
+[English](README.en.md), [Spanish](README.es.md).** API Key:
 
 # React homework template
 
