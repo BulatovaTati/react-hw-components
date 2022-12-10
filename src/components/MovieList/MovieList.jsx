@@ -5,11 +5,11 @@ const MoviesList = ({ movies }) => {
 
   const CreateLink = ({ id, title }) => {
     return location.pathname === '/' ? (
-      <NavLink to={`movies/${id}`} key={id}>
+      <NavLink to={`movies/${id}`} key={id} state={{ from: location }}>
         {title}
       </NavLink>
     ) : (
-      <NavLink to={`${id}`} key={id}>
+      <NavLink to={`${id}`} key={id} state={{ from: location }}>
         {title}
       </NavLink>
     );
@@ -17,7 +17,7 @@ const MoviesList = ({ movies }) => {
 
   return (
     <ul>
-      {movies &&
+      {movies.length > 0 &&
         movies.map(({ id, title }) => {
           return (
             <li key={id}>

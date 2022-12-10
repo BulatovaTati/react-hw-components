@@ -15,13 +15,13 @@ const App = () => {
           <Link to="/" end>
             Home
           </Link>
-          <Link to="/movies">Movie</Link>
+          <Link to="movies">Movie</Link>
         </nav>
       </Header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
+        <Route path="movies" element={<Movies />} />
+        <Route path="movies/:movieId" element={<MovieDetails />}>
           <Route path="reviews" element={<Reviews />} />
           <Route path="cast" element={<Cast />} />
         </Route>

@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <main>
       <h1>Trendings Today</h1>
-      {movies && <MoviesList movies={movies} />}
+      {movies.length > 0 && <MoviesList movies={movies} />}
     </main>
   );
 };
