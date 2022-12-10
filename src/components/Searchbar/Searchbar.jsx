@@ -2,17 +2,16 @@ import { useState } from 'react';
 import { FcSearch } from 'react-icons/fc';
 
 import {
-  SearchSticky,
+  SearchBox,
   SearchForm,
   SearchFormButton,
   SearchFormButtonLabel,
   SearchFormInput,
 } from './Searchbar.styled';
 
-const Searchbar = ({ onSearch }) => {
+const Searchbar = ({ onChange }) => {
   const [query, setQuery] = useState('');
 
-  // Is triggered when the form is submitted
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -20,19 +19,16 @@ const Searchbar = ({ onSearch }) => {
       return console.warn('Oops... Enter the title');
     }
 
-    // Prop that is passed to the form to be called upon submission
-    // onSearch(query);
-    // setQuery('');
+    onChange(query);
+    setQuery('');
   };
-
   return (
-    <SearchSticky>
+    <SearchBox>
       <SearchForm onSubmit={handleSubmit}>
         <SearchFormInput
           type="text"
           name="query"
           autocomplete="off"
-          autoFocus
           placeholder="Search images and photos"
           value={query}
           onChange={e => setQuery(e.target.value.toLowerCase())}
@@ -42,7 +38,7 @@ const Searchbar = ({ onSearch }) => {
           <SearchFormButtonLabel>Search</SearchFormButtonLabel>
         </SearchFormButton>
       </SearchForm>
-    </SearchSticky>
+    </SearchBox>
   );
 };
 export default Searchbar;
