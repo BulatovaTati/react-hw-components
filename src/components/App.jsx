@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from 'pages/Home';
 import Movies from 'pages/Movies';
+import MovieDetails from 'pages/MovieDetails';
 import NotFound from 'pages/NotFound';
 import { Container, Header, Link } from './App.styled';
-import MovieDetails from './MovieDetails/MovieDetails';
 import Reviews from './MovieDetails/Reviews/Reviews';
 import Cast from './MovieDetails/Cast/Cast';
 
@@ -20,8 +20,8 @@ const App = () => {
       </Header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="movies/:movieId" element={<MovieDetails />}>
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />}>
           <Route path="reviews" element={<Reviews />} />
           <Route path="cast" element={<Cast />} />
         </Route>

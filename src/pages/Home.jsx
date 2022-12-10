@@ -22,7 +22,6 @@ const Home = () => {
     }
     fetchMovies();
   }, []);
-
   return (
     <main>
       <h1>Trendings Today</h1>

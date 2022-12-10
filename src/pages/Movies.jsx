@@ -7,7 +7,6 @@ import { getMovieByName } from 'services/Fetch';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  console.log('movies: ', movies);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') ?? '';
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const SearchBox = styled.header`
+export const SearchBox = styled.section`
   display: flex;
   align-items: center;
   min-height: 64px;

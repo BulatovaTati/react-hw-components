@@ -12,7 +12,7 @@ const Card = ({
           poster_path === null ? noPosterImg : BASE_IMG_URL + poster_path
         }`}
         alt={original_title}
-        width="220"
+        width="320"
       />
       <h1>{original_title}</h1>
       <p>User Score:{vote_average}</p>
