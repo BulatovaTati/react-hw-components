@@ -9,7 +9,7 @@ import App from 'components/App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/react-hw-components/">
+    <BrowserRouter basename="/react-hw-components">
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>

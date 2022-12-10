@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: aliceblue;
+    background-color: white;
   }
   
   code {
@@ -38,6 +38,7 @@ ul {
   padding: 0;
   list-style: none;
 }
+ 
 `;
 
 export default GlobalStyle;

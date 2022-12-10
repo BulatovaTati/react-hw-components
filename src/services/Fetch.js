@@ -29,4 +29,28 @@ const fetchMovieById = async id => {
 
   return response.data;
 };
-export { getTrendingMovies, getMovieByName, fetchMovieById };
+
+// Запит за акторами
+const getCredits = async id => {
+  const response = await axios.get(
+    `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`
+  );
+
+  return response.data;
+};
+
+// Запит за відгуками
+const getReviews = async id => {
+  const response = await axios.get(
+    `${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}`
+  );
+
+  return response.data;
+};
+export {
+  getTrendingMovies,
+  getMovieByName,
+  fetchMovieById,
+  getCredits,
+  getReviews,
+};
