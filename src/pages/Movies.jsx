@@ -7,6 +7,7 @@ import { getMovieByName } from 'services/Fetch';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  console.log('movies: ', movies);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') ?? '';
 
@@ -17,7 +18,6 @@ const Movies = () => {
       try {
         const movies = await getMovieByName(searchQuery);
         setMovies(movies.results);
-        console.log('movies.results: ', movies.results);
       } catch (error) {
         console.log(error);
       }
@@ -30,7 +30,6 @@ const Movies = () => {
   };
 
   const getMovies = newQuery => {
-    console.log('newQuery: ', newQuery);
     if (newQuery === searchParams) return;
     searchMovie(newQuery);
     setMovies([]);

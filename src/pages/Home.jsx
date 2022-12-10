@@ -4,19 +4,20 @@ import { getTrendingMovies } from 'services/Fetch';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchMovies() {
       try {
-        setIsLoading(true);
+        // setIsLoading(true);
         const movies = await getTrendingMovies();
         setMovies(movies.results);
-        setIsLoading(false);
+        // setIsLoading(false);
       } catch (error) {
-        setError(true);
-        setIsLoading(false);
+        console.log('error: ', error);
+        // setError(true);
+        // setIsLoading(false);
       }
     }
     fetchMovies();
