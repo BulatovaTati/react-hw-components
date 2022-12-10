@@ -1,15 +1,27 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const MoviesList = ({ movies }) => {
+  const location = useLocation();
+
+  const CreateLink = ({ id, title }) => {
+    return location.pathname === '/' ? (
+      <NavLink to={`movies/${id}`} key={id}>
+        {title}
+      </NavLink>
+    ) : (
+      <NavLink to={`${id}`} key={id}>
+        {title}
+      </NavLink>
+    );
+  };
+
   return (
     <ul>
       {movies &&
         movies.map(({ id, title }) => {
           return (
             <li key={id}>
-              <NavLink to={`${id}`} key={id}>
-                {title}
-              </NavLink>
+              <CreateLink id={id} title={title} />
             </li>
           );
         })}
