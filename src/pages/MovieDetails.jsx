@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieById } from 'services/Fetch';
 import MovieCard from 'components/MovieDetails/MovieCard/MovieCard';
-import BackLink from 'components/MovieDetails/Back';
+import BackLink from 'components/MovieDetails/GoBack/GoBack';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState([]);

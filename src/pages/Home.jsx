@@ -24,7 +24,7 @@ const Home = () => {
   }, []);
   return (
     <main>
-      <h1>Trendings Today</h1>
+      <h1 style={{ textAlign: 'center' }}>Trendings Today</h1>
       {movies.length > 0 && <MoviesList movies={movies} />}
     </main>
   );

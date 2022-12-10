@@ -2,6 +2,7 @@ import styled from 'styled-components';
 export const SearchBox = styled.section`
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 64px;
   padding-right: 24px;
   padding-left: 24px;

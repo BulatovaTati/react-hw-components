@@ -1,31 +1,31 @@
-import { NavLink, useLocation } from 'react-router-dom';
-
+import { useLocation } from 'react-router-dom';
+import { TrendList, Card, Link } from './MovieList.styled';
 const MoviesList = ({ movies }) => {
   const location = useLocation();
 
   const CreateLink = ({ id, title }) => {
     return location.pathname === '/' ? (
-      <NavLink to={`movies/${id}`} key={id} state={{ from: location }}>
+      <Link to={`movies/${id}`} key={id} state={{ from: location }}>
         {title}
-      </NavLink>
+      </Link>
     ) : (
-      <NavLink to={`${id}`} key={id} state={{ from: location }}>
+      <Link to={`${id}`} key={id} state={{ from: location }}>
         {title}
-      </NavLink>
+      </Link>
     );
   };
 
   return (
-    <ul>
+    <TrendList>
       {movies.length > 0 &&
         movies.map(({ id, title }) => {
           return (
-            <li key={id}>
+            <Card key={id}>
               <CreateLink id={id} title={title} />
-            </li>
+            </Card>
           );
         })}
-    </ul>
+    </TrendList>
   );
 };
 
