@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'services/Fetch';
-
+import { List, Item } from '../Cast/Cast.styled';
 const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
@@ -20,17 +20,26 @@ const Reviews = () => {
   return (
     <section>
       {reviews.length === 0 && <div>None</div>}
-      <ul>
+      <List>
         {reviews &&
           reviews.map(({ id, author, content }) => {
             return (
-              <li key={id}>
-                <p>Autor: {author}</p>
+              <Item
+                key={id}
+                style={{
+                  minWidth: '350px',
+                  height: '360px',
+                  overflowY: 'scroll',
+                }}
+              >
+                <p style={{ marginBottom: '10px' }}>
+                  <b>Autor: {author}</b>
+                </p>
                 <p>{content}</p>
-              </li>
+              </Item>
             );
           })}
-      </ul>
+      </List>
     </section>
   );
 };

@@ -3,13 +3,7 @@ const noPosterImg =
   'https://sd.keepcalms.com/i/sorry-no-picture-available-2.png';
 
 const ImagePosterPath = ({ path, alt }) => {
-  return (
-    <img
-      src={`${!path ? noPosterImg : BASE_IMG_URL + path}`}
-      alt={alt}
-      width="320"
-    />
-  );
+  return <img src={`${!path ? noPosterImg : BASE_IMG_URL + path}`} alt={alt} />;
 };
 
 export default ImagePosterPath;
