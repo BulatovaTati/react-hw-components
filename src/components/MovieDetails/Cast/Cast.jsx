@@ -1,8 +1,8 @@
-import NoInfo from 'components/NoneInfo/NoneInfo';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCredits } from 'services/Fetch';
 import ImagePosterPath from '../MovieCard/ImagePoster';
+import NoInfo from 'components/NoneInfo/NoneInfo';
 import { List, Item } from './Cast.styled';
 
 const Cast = () => {
