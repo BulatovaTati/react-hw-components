@@ -1,3 +1,4 @@
+import NoInfo from 'components/NoneInfo/NoneInfo';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCredits } from 'services/Fetch';
@@ -20,11 +21,9 @@ const Cast = () => {
     fetchGredits();
   }, [movieId]);
 
-  if (!creadits) return null;
-
   return (
     <section>
-      {creadits.length === 0 && <div>None</div>}
+      {creadits.length === 0 && <NoInfo />}
       <List>
         {creadits &&
           creadits.map(({ id, character, name, profile_path }) => {

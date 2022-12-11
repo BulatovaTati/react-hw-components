@@ -1,7 +1,9 @@
+import NoInfo from 'components/NoneInfo/NoneInfo';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'services/Fetch';
 import { List, Item } from '../Cast/Cast.styled';
+
 const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
@@ -19,7 +21,7 @@ const Reviews = () => {
   }, [movieId]);
   return (
     <section>
-      {reviews.length === 0 && <div>None</div>}
+      {reviews.length === 0 && <NoInfo />}
       <List>
         {reviews &&
           reviews.map(({ id, author, content }) => {
@@ -27,8 +29,9 @@ const Reviews = () => {
               <Item
                 key={id}
                 style={{
+                  padding: '5px',
                   minWidth: '350px',
-                  height: '360px',
+                  maxHeight: '260px',
                   overflowY: 'scroll',
                 }}
               >

@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { fetchMovieById } from 'services/Fetch';
 import MovieCard from 'components/MovieDetails/MovieCard/MovieCard';
 import BackLink from 'components/MovieDetails/GoBack/GoBack';
-import { Warn } from 'components/Toast/Toast';
+import { Warn } from 'services/Toast';
 import {
   Section,
   Link,
@@ -44,6 +44,7 @@ const MovieDetails = () => {
           Reviews
         </Link>
       </Section>
+
       <Outlet />
       <ToastContainer autoClose={2000} />
     </main>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FcSearch } from 'react-icons/fc';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,3 +46,7 @@ const Searchbar = ({ onChange }) => {
   );
 };
 export default Searchbar;
+
+Searchbar.propTypes = {
+  onChange: PropTypes.func,
+};

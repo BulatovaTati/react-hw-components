@@ -5,7 +5,7 @@ import Loader from 'components/Loader/Loader';
 import { getMovieByName } from 'services/Fetch';
 import Searchbar from 'components/Searchbar/Searchbar';
 import MoviesList from 'components/MovieList/MovieList';
-import { Warn, WarnSearchQuery } from 'components/Toast/Toast';
+import { Warn, WarnSearchQuery } from 'services/Toast';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
