@@ -1,12 +1,15 @@
-import MoviesList from 'components/MovieList/MovieList';
-import Searchbar from 'components/Searchbar/Searchbar';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import Loader from 'components/Loader/Loader';
 import { getMovieByName } from 'services/Fetch';
+import Searchbar from 'components/Searchbar/Searchbar';
+import MoviesList from 'components/MovieList/MovieList';
+import { Warn, WarnSearchQuery } from 'components/Toast/Toast';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') ?? '';
 
@@ -15,12 +18,20 @@ const Movies = () => {
 
     async function fetchMovies() {
       try {
+        setIsLoading(true);
         const movies = await getMovieByName(searchQuery);
         setMovies(movies.results);
-      } catch (error) {
-        console.log(error);
+
+        if (movies.results.length === 0) {
+          WarnSearchQuery(searchQuery);
+        }
+      } catch (_) {
+        Warn();
+      } finally {
+        setIsLoading(false);
       }
     }
+
     fetchMovies();
   }, [searchQuery]);
 
@@ -37,7 +48,9 @@ const Movies = () => {
   return (
     <main>
       <Searchbar onChange={getMovies} />
-      <MoviesList movies={movies} />
+      {isLoading && <Loader />}
+      {movies && !isLoading && <MoviesList movies={movies} />}
+      <ToastContainer autoClose={2000} />
     </main>
   );
 };

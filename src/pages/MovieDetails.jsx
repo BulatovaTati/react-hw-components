@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { fetchMovieById } from 'services/Fetch';
 import MovieCard from 'components/MovieDetails/MovieCard/MovieCard';
 import BackLink from 'components/MovieDetails/GoBack/GoBack';
+import { Warn } from 'components/Toast/Toast';
 import {
   Section,
   Link,
@@ -19,29 +21,31 @@ const MovieDetails = () => {
       try {
         const movies = await fetchMovieById(movieId);
         setMovie(movies);
-      } catch (error) {
-        console.log(error);
+      } catch (_) {
+        Warn();
       }
     }
     fetchMovies();
   }, [movieId]);
 
-  if (!movie) return null;
+  const BackLinkTo = location.state?.from ?? '/movies';
 
   return (
     <main>
-      <BackLink to={location.state?.from}>Go Back</BackLink>
+      <BackLink to={BackLinkTo}>Go Back</BackLink>
       <MovieCard movie={movie} />
       <Section>
         <Title>Aditional Information</Title>
-        <Link to="cast" state={{ from: location.state?.from }}>
+
+        <Link to="cast" state={{ from: BackLinkTo }}>
           Cast
         </Link>
-        <Link to="reviews" state={{ from: location.state?.from }}>
+        <Link to="reviews" state={{ from: BackLinkTo }}>
           Reviews
         </Link>
       </Section>
       <Outlet />
+      <ToastContainer autoClose={2000} />
     </main>
   );
 };

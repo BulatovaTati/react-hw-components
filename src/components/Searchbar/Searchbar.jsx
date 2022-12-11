@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { FcSearch } from 'react-icons/fc';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   SearchBox,
@@ -16,7 +18,7 @@ const Searchbar = ({ onChange }) => {
     e.preventDefault();
 
     if (query.trim() === '') {
-      return console.warn('Oops... Enter the title');
+      return toast.warn('Oops... Enter the title');
     }
 
     onChange(query);
@@ -38,6 +40,7 @@ const Searchbar = ({ onChange }) => {
           <SearchFormButtonLabel>Search</SearchFormButtonLabel>
         </SearchFormButton>
       </SearchForm>
+      <ToastContainer autoClose={2000} />
     </SearchBox>
   );
 };

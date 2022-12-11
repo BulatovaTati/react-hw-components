@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Section = styled.section`
+  display: block;
   padding: 10px;
+  text-align: center;
 `;
 
 export const Title = styled.h3`
   margin-bottom: 20px;
-  text-align: center;
 `;
 export const Link = styled(NavLink)`
   display: inline-block;
