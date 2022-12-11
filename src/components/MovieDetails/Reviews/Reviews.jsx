@@ -24,24 +24,22 @@ const Reviews = () => {
       {reviews.length === 0 && <NoInfo />}
       <List>
         {reviews &&
-          reviews.map(({ id, author, content }) => {
-            return (
-              <Item
-                key={id}
-                style={{
-                  padding: '5px',
-                  minWidth: '350px',
-                  maxHeight: '260px',
-                  overflowY: 'scroll',
-                }}
-              >
-                <p style={{ marginBottom: '10px' }}>
-                  <b>Autor: {author}</b>
-                </p>
-                <p>{content}</p>
-              </Item>
-            );
-          })}
+          reviews.map(({ id, author, content }) => (
+            <Item
+              key={id}
+              style={{
+                padding: '5px',
+                minWidth: '350px',
+                maxHeight: '260px',
+                overflowY: 'scroll',
+              }}
+            >
+              <p style={{ marginBottom: '10px' }}>
+                <b>Autor: {author}</b>
+              </p>
+              <p>{content}</p>
+            </Item>
+          ))}
       </List>
     </section>
   );

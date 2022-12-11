@@ -29,7 +29,7 @@ export const Item = styled.li`
   padding: 5px;
 `;
 
-export const Img = styled.div`
+export const Wrapper = styled.div`
   min-width: 450px;
   margin-right: 10px;
   display: flex;

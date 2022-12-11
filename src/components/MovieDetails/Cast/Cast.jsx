@@ -26,15 +26,13 @@ const Cast = () => {
       {creadits.length === 0 && <NoInfo />}
       <List>
         {creadits &&
-          creadits.map(({ id, character, name, profile_path }) => {
-            return (
-              <Item key={id}>
-                <ImagePosterPath path={profile_path} alt={name} />
-                <span>{name}</span>
-                <span>Character: {character}</span>
-              </Item>
-            );
-          })}
+          creadits.map(({ id, character, name, profile_path }) => (
+            <Item key={id}>
+              <ImagePosterPath path={profile_path} alt={name} />
+              <span>{name}</span>
+              <span>Character: {character}</span>
+            </Item>
+          ))}
       </List>
     </section>
   );

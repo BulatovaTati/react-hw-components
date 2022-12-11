@@ -20,13 +20,11 @@ const MoviesList = ({ movies }) => {
   return (
     <TrendList>
       {movies.length > 0 &&
-        movies.map(({ id, title }) => {
-          return (
-            <Card key={id}>
-              <CreateLink id={id} title={title} />
-            </Card>
-          );
-        })}
+        movies.map(({ id, title }) => (
+          <Card key={id}>
+            <CreateLink id={id} title={title} />
+          </Card>
+        ))}
     </TrendList>
   );
 };

@@ -36,7 +36,6 @@ const MovieDetails = () => {
       <MovieCard movie={movie} />
       <Section>
         <Title>Aditional Information</Title>
-
         <Link to="cast" state={{ from: BackLinkTo }}>
           Cast
         </Link>

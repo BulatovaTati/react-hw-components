@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { FcSearch } from 'react-icons/fc';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import {
   SearchBox,
   SearchForm,
@@ -25,6 +24,7 @@ const Searchbar = ({ onChange }) => {
     onChange(query);
     setQuery('');
   };
+
   return (
     <SearchBox>
       <SearchForm onSubmit={handleSubmit}>
