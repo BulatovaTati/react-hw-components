@@ -2,14 +2,23 @@ import ImagePosterPath from './ImagePoster';
 import { Section, GengesList, Container, Item } from './MovieCard.styled';
 
 const Card = ({
-  movie: { original_title, overview, genres, poster_path, vote_average },
+  movie: {
+    original_title,
+    overview,
+    genres,
+    poster_path,
+    vote_average,
+    release_date,
+  },
 }) => {
   return (
     <Section>
       <ImagePosterPath path={poster_path} alt={original_title} />
       <Container>
-        <h1>{original_title}</h1>
-        <p>User Score: {vote_average}</p>
+        <h1>
+          {original_title} {release_date?.slice(0, 4)}
+        </h1>
+        <p>User Score: {vote_average * 10}%</p>
         <h2>Overview</h2>
         <p>{overview}</p>
         <h2>Genres</h2>

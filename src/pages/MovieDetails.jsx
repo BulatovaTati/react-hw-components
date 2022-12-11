@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieById } from 'services/Fetch';
 import MovieCard from 'components/MovieDetails/MovieCard/MovieCard';
 import BackLink from 'components/MovieDetails/GoBack/GoBack';
+import {
+  Section,
+  Link,
+  Title,
+} from '../components/MovieDetails/MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState([]);
@@ -27,16 +32,15 @@ const MovieDetails = () => {
     <main>
       <BackLink to={location.state?.from}>Go Back</BackLink>
       <MovieCard movie={movie} />
-      <div>
-        <h3>Aditional Information</h3>
-        <NavLink to="cast" state={{ from: location.state?.from }}>
+      <Section>
+        <Title>Aditional Information</Title>
+        <Link to="cast" state={{ from: location.state?.from }}>
           Cast
-        </NavLink>
-        <br />
-        <NavLink to="reviews" state={{ from: location.state?.from }}>
+        </Link>
+        <Link to="reviews" state={{ from: location.state?.from }}>
           Reviews
-        </NavLink>
-      </div>
+        </Link>
+      </Section>
       <Outlet />
     </main>
   );
