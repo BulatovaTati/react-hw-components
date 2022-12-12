@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { animateScroll } from 'react-scroll';
 import { getCredits } from 'services/Fetch';
 import ImagePosterPath from '../MovieCard/ImagePoster';
 import NoInfo from 'components/NoneInfo/NoneInfo';
@@ -20,6 +21,10 @@ const Cast = () => {
     }
     fetchGredits();
   }, [movieId]);
+
+  if (creadits) {
+    animateScroll.scrollMore(500);
+  }
 
   return (
     <section>

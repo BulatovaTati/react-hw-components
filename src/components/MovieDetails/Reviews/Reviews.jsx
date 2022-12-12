@@ -1,6 +1,8 @@
 import NoInfo from 'components/NoneInfo/NoneInfo';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { animateScroll } from 'react-scroll';
+
 import { getReviews } from 'services/Fetch';
 import { List, Item } from '../Cast/Cast.styled';
 
@@ -19,6 +21,11 @@ const Reviews = () => {
     }
     fetchGredits();
   }, [movieId]);
+
+  if (reviews) {
+    animateScroll.scrollMore(600);
+  }
+
   return (
     <section>
       {reviews.length === 0 && <NoInfo />}
