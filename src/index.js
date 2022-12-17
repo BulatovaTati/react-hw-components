@@ -1,19 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
+import { Global, ThemeProvider } from '@emotion/react';
+import 'modern-normalize';
 
-import theme from 'services/theme';
-import GlobalStyle from 'services/GlobalStyle';
-import App from 'components/App';
+import { App } from 'components';
+import { GlobalStyles, theme } from 'styles';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/react-hw-components">
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>
-    <GlobalStyle />
+    <ThemeProvider theme={theme}>
+      <Global styles={GlobalStyles} />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
