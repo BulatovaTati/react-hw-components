@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { ContactsForm, Menu, ContactsList, Filter } from 'components/Phonebook';
-import { Container } from 'components/Phonebook/Phonebook.styled';
+import { Container } from './Phonebook.styled';
 import useLocalStorage from 'hooks/useLocalStorage';
 
 const Phonebook = () => {
