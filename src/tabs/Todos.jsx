@@ -20,7 +20,7 @@ export class Todos extends Component {
     };
 
     this.setState(({ todos }) => ({
-      todos: [todo, ...todos],
+      todos: [...todos, todo],
     }));
   };
 
@@ -100,10 +100,11 @@ export class Todos extends Component {
 
         <Grid>
           {todos &&
-            todos.map(({ id, text }) => (
+            todos.map(({ id, text }, index) => (
               <GridItem key={id}>
                 <Todo
                   id={id}
+                  title={index + 1}
                   text={text}
                   deleteHandler={deleteTodo}
                   onUpdate={handleEditing}

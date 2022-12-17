@@ -3,10 +3,12 @@ import { TodoWrapper, DeleteButton, EditButton } from './Todo.styled';
 
 import { RiDeleteBinLine, RiEdit2Line } from 'react-icons/ri';
 
-export const Todo = ({ id, text, deleteHandler, onUpdate }) => {
+export const Todo = ({ id, title, text, deleteHandler, onUpdate }) => {
   return (
     <TodoWrapper>
-      <Text textAlign="center" marginBottom="20px"></Text>
+      <Text textAlign="center" marginBottom="20px">
+        Task№ {title}
+      </Text>
       <Text> {text}</Text>
       <DeleteButton type="button" onClick={() => deleteHandler(id)}>
         <RiDeleteBinLine size={24} />
