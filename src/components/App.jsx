@@ -1,6 +1,5 @@
 import Phonebook from 'components/Phonebook/Phonebook';
 
-function App() {
+export const App = () => {
   return <Phonebook />;
-}
-export default App;
+};

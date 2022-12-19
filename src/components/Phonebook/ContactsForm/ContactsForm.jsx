@@ -1,6 +1,10 @@
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import { nanoid } from 'nanoid';
+import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/contactsSlice';
+
+import { useSelector, useDispatch } from 'react-redux';
+
 import PropTypes from 'prop-types';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
@@ -31,7 +35,10 @@ const initialValues = {
   number: '',
 };
 
-const ContactsForm = ({ addContact, contacts, toggle }) => {
+const ContactsForm = ({ toggle }) => {
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
     const isInclude = contacts.some(
       contact => contact.name.toLowerCase() === values.name.toLowerCase()
@@ -41,9 +48,10 @@ const ContactsForm = ({ addContact, contacts, toggle }) => {
       Notify.failure(`${values.name} is already in contacts`);
       return;
     }
-
-    values.id = nanoid(7);
-    addContact(values);
+    const handleDelete = () => dispatch(addContact(values));
+    handleDelete();
+    // values.id = nanoid(7);
+    // addContact(values);
     resetForm();
   };
 
@@ -92,7 +100,5 @@ const ContactsForm = ({ addContact, contacts, toggle }) => {
 export default ContactsForm;
 
 ContactsForm.propTypes = {
-  onSubmit: PropTypes.func,
-  contacts: PropTypes.array,
   toggle: PropTypes.func,
 };

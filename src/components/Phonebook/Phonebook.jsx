@@ -1,37 +1,11 @@
 import { useState } from 'react';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { ContactsForm, Menu, ContactsList, Filter } from 'components/Phonebook';
 import { Container } from './Phonebook.styled';
-import useLocalStorage from 'hooks/useLocalStorage';
 
 const Phonebook = () => {
-  const [contacts, setContacts] = useLocalStorage('contacts', []);
-  const [filter, setFilter] = useState('');
   const [isOpenForm, setIsOpenForm] = useState(false);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
-
-  const onSearch = evt => {
-    const value = evt.target.value;
-    setFilter(value);
-  };
-
-  const addContact = data => {
-    setContacts(
-      prevState => {
-        return [data, ...prevState];
-      },
-
-      Notify.success('Contact added')
-    );
-    toggle('isOpenForm');
-  };
-
-  const deleteContact = id => {
-    setContacts(
-      prevState => prevState.filter(contact => contact.id !== id),
-      Notify.success('Contact removed')
-    );
-  };
 
   const toggle = component => {
     switch (component) {
@@ -46,13 +20,6 @@ const Phonebook = () => {
     }
   };
 
-  const visibleContacts = () =>
-    contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-
-  const filteredContacts = visibleContacts();
-
   return (
     <Container>
       <Menu
@@ -60,17 +27,11 @@ const Phonebook = () => {
         isOpenFilter={isOpenFilter}
         toggle={toggle}
       />
-      {isOpenForm && (
-        <ContactsForm
-          toggle={toggle}
-          contacts={contacts}
-          addContact={addContact}
-        />
-      )}
+      {isOpenForm && <ContactsForm toggle={toggle} />}
 
-      {isOpenFilter && <Filter value={filter} onSearch={onSearch} />}
+      {isOpenFilter && <Filter />}
 
-      <ContactsList deleteHandler={deleteContact} contacts={filteredContacts} />
+      <ContactsList />
     </Container>
   );
 };

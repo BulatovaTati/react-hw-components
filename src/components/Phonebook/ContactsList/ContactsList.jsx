@@ -1,5 +1,7 @@
 import { useRef } from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { getContacts } from 'redux/selectors';
+
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Notification } from 'common/Notification/Notification';
 
@@ -18,7 +20,9 @@ const EntryContainer = ({ children, ...props }) => {
   );
 };
 
-const ContactsList = ({ contacts, deleteHandler }) => {
+const ContactsList = () => {
+  const contacts = useSelector(getContacts);
+
   return (
     <Wrapper>
       <Title>Contacts</Title>
@@ -27,12 +31,7 @@ const ContactsList = ({ contacts, deleteHandler }) => {
           <TransitionGroup>
             {contacts.map(({ id, name, number }) => (
               <EntryContainer key={id}>
-                <ContactItem
-                  id={id}
-                  name={name}
-                  number={number}
-                  deleteHandler={deleteHandler}
-                />
+                <ContactItem id={id} name={name} number={number} />
               </EntryContainer>
             ))}
           </TransitionGroup>
@@ -45,8 +44,3 @@ const ContactsList = ({ contacts, deleteHandler }) => {
 };
 
 export default ContactsList;
-
-ContactsList.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.object),
-  deleteHandler: PropTypes.func,
-};
