@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { ContactsForm, Menu, ContactsList, Filter } from 'components/Phonebook';
 import { Container } from './Phonebook.styled';
 
@@ -28,7 +27,6 @@ const Phonebook = () => {
         toggle={toggle}
       />
       {isOpenForm && <ContactsForm toggle={toggle} />}
-
       {isOpenFilter && <Filter />}
 
       <ContactsList />
