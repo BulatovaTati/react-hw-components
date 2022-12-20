@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
-
+import { getFilterValue } from 'redux/selectors';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Notification } from 'common/Notification/Notification';
 
@@ -22,14 +22,22 @@ const EntryContainer = ({ children, ...props }) => {
 
 const ContactsList = () => {
   const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilterValue);
+
+  const visibleContacts = () =>
+    contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+  const filteredContacts = visibleContacts();
 
   return (
     <Wrapper>
       <Title>Contacts</Title>
-      {contacts.length > 0 ? (
+      {filteredContacts.length > 0 ? (
         <ul>
           <TransitionGroup>
-            {contacts.map(({ id, name, number }) => (
+            {filteredContacts.map(({ id, name, number }) => (
               <EntryContainer key={id}>
                 <ContactItem id={id} name={name} number={number} />
               </EntryContainer>

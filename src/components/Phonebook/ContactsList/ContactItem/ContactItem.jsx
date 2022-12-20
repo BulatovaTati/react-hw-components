@@ -7,7 +7,6 @@ import { RiDeleteBin7Line } from 'react-icons/ri';
 
 const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteContact(id));
 
   return (
     <Item>
@@ -15,7 +14,11 @@ const ContactItem = ({ id, name, number }) => {
         <IconUser />
         {name} : {number}
       </Contact>
-      <Button onClick={handleDelete} title="Delete" type="button">
+      <Button
+        onClick={() => dispatch(deleteContact(id))}
+        title="Delete"
+        type="button"
+      >
         <RiDeleteBin7Line />
       </Button>
     </Item>

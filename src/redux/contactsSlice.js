@@ -1,29 +1,30 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: [],
+  initialState: {
+    contacts: [],
+  },
   reducers: {
-    addContact: {
-      reducer(state, action) {
-        state.push(action.payload);
-      },
-      prepare(name, number) {
-        return {
-          payload: {
-            id: nanoid(),
-            name,
-            number,
-          },
-        };
-      },
+    addContact(state, { payload: { name, number } }) {
+      if (state.contacts.some(el => el.name === name)) {
+        Notify.failure(`${name} is already in contacts`);
+        return;
+      }
+      state.contacts.push({
+        id: nanoid(6),
+        name,
+        number,
+      });
+      Notify.success('Contact added');
     },
 
     deleteContact(state, action) {
-      const index = state.findIndex(task => task.id === action.payload);
-      state.splice(index, 1);
+      state.contacts = state.contacts.filter(el => el.id !== action.payload);
+      Notify.success('Contact removed');
     },
   },
 });

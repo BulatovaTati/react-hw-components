@@ -1,12 +1,8 @@
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import { getContacts } from 'redux/selectors';
 import { addContact } from 'redux/contactsSlice';
-
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   ErrorMsg,
   FormInner,
@@ -29,35 +25,21 @@ const schema = yup.object().shape({
     .required(),
 });
 
-const initialValues = {
-  id: '',
-  name: '',
-  number: '',
-};
-
 const ContactsForm = ({ toggle }) => {
-  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    const isInclude = contacts.some(
-      contact => contact.name.toLowerCase() === values.name.toLowerCase()
-    );
-
-    if (isInclude) {
-      Notify.failure(`${values.name} is already in contacts`);
-      return;
-    }
-    const handleDelete = () => dispatch(addContact(values));
-    handleDelete();
-    // values.id = nanoid(7);
-    // addContact(values);
+    dispatch(addContact(values));
     resetForm();
+    toggle('isOpenForm');
   };
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{
+        name: '',
+        number: '',
+      }}
       validationSchema={schema}
       onSubmit={handleSubmit}
     >
