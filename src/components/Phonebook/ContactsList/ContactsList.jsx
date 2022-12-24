@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { getFilterValue } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
+import { selectFilterValue } from 'redux/selectors';
 
 import ContactItem from './ContactItem/ContactItem';
 import { Notification } from 'common/Notification/Notification';
 import { Title, Wrapper } from './ContactsList.styled';
 
 const ContactsList = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
-  const filter = useSelector(getFilterValue);
+  const filter = useSelector(selectFilterValue);
 
   const visibleContacts = () =>
     contacts.filter(contact =>
