@@ -1,7 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { addContact } from 'redux/operations';
 
 import {
@@ -12,6 +13,7 @@ import {
   Label,
 } from './ContactsForm.styled';
 import { Button } from './ContactsForm.styled';
+import { selectContacts } from 'redux/selectors';
 
 const nameRegExp = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
@@ -28,8 +30,13 @@ const schema = yup.object().shape({
 
 const ContactsForm = ({ toggle }) => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = (values, { resetForm }) => {
+    if (contacts.find(contact => contact.name === values.name)) {
+      return Notify.failure(`${values.name} is already in contacts`);
+    }
+
     dispatch(addContact(values));
     resetForm();
     toggle('isOpenForm');

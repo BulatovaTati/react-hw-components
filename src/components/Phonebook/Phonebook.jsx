@@ -39,8 +39,12 @@ const Phonebook = () => {
       />
       {isOpenForm && <ContactsForm toggle={toggle} />}
       {isOpenFilter && <Filter />}
-      {isLoading && !error && <b>Request in progress...</b>}
-      <ContactsList />
+      {isLoading && !error && (
+        <p style={{ textAlign: 'center', marginTop: '20px' }}>
+          <b>Please wait your contacts 😀, Thank you!</b>
+        </p>
+      )}
+      {!isLoading && <ContactsList />}
     </Container>
   );
 };
