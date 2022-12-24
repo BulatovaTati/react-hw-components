@@ -28,7 +28,7 @@ const schema = yup.object().shape({
     .required(),
 });
 
-const ContactsForm = ({ toggle }) => {
+export const ContactsForm = ({ toggle }) => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
@@ -86,8 +86,6 @@ const ContactsForm = ({ toggle }) => {
     </Formik>
   );
 };
-
-export default ContactsForm;
 
 ContactsForm.propTypes = {
   toggle: PropTypes.func,

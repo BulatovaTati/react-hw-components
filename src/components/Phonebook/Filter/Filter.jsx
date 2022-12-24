@@ -3,7 +3,7 @@ import { selectFilterValue } from 'redux/selectors';
 import { getfilteredContacts } from 'redux/filterSlice';
 import { FilterWrapper, Input, Title } from './Filter.styled';
 
-const Filter = () => {
+export const Filter = () => {
   const dispatch = useDispatch();
   const value = useSelector(selectFilterValue);
 
@@ -19,5 +19,3 @@ const Filter = () => {
     </FilterWrapper>
   );
 };
-
-export default Filter;

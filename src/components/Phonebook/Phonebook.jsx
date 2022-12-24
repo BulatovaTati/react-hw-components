@@ -5,7 +5,7 @@ import { selectError, selectIsLoading } from 'redux/selectors';
 import { ContactsForm, Menu, ContactsList, Filter } from 'components/Phonebook';
 import { Container } from './Phonebook.styled';
 
-const Phonebook = () => {
+export const Phonebook = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -48,5 +48,3 @@ const Phonebook = () => {
     </Container>
   );
 };
-
-export default Phonebook;

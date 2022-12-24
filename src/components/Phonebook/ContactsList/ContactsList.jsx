@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import { visibleContacts } from 'redux/selectors';
-import ContactItem from './ContactItem/ContactItem';
+import { ContactItem } from './ContactItem/ContactItem';
 import { Notification } from 'components/Phonebook/Notification/Notification';
 import { Title, Wrapper } from './ContactsList.styled';
 
-const ContactsList = () => {
+export const ContactsList = () => {
   const contacts = useSelector(visibleContacts);
 
   return (
@@ -22,5 +22,3 @@ const ContactsList = () => {
     </Wrapper>
   );
 };
-
-export default ContactsList;

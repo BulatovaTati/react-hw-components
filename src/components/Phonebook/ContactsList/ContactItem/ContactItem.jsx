@@ -5,7 +5,7 @@ import { deleteContact } from 'redux/operations';
 import { Contact, IconUser, Item, Button } from './ContactItem.styled';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 
-const ContactItem = ({ id, name, number }) => {
+export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(id));
 
@@ -21,8 +21,6 @@ const ContactItem = ({ id, name, number }) => {
     </Item>
   );
 };
-
-export default ContactItem;
 
 ContactItem.propTypes = {
   id: PropTypes.string,

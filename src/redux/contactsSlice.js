@@ -60,3 +60,7 @@ export const contactsReducer = persistReducer(
   persistConfig,
   contactsSlice.reducer
 );
+
+// or   extraReducers: builder => {
+//     builder.addCase(todoAdded, (state, action) => {})
+//   }

@@ -2,7 +2,7 @@ import { Button, Wrapper } from './Menu.styled';
 import { RiUserSearchLine, RiUserAddLine } from 'react-icons/ri';
 import { TitleEl } from 'components/Phonebook/Title/Title';
 
-const Menu = ({ toggle, isOpenFilter, isOpenForm }) => {
+export const Menu = ({ toggle, isOpenFilter, isOpenForm }) => {
   return (
     <Wrapper>
       <TitleEl str="Phonebook" color="white" />
@@ -27,5 +27,3 @@ const Menu = ({ toggle, isOpenFilter, isOpenForm }) => {
     </Wrapper>
   );
 };
-
-export default Menu;
