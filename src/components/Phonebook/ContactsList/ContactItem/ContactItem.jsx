@@ -4,10 +4,14 @@ import { deleteContact } from 'redux/operations';
 
 import { Contact, IconUser, Item, Button } from './ContactItem.styled';
 import { RiDeleteBin7Line } from 'react-icons/ri';
+import { Notify } from 'notiflix';
 
 export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteContact(id));
+  const handleDelete = () => {
+    dispatch(deleteContact(id));
+    Notify.success('Contact removed');
+  };
 
   return (
     <Item>

@@ -4,6 +4,7 @@ import { fetchContacts } from 'redux/operations';
 import { selectError, selectIsLoading } from 'redux/selectors';
 import { ContactsForm, Menu, ContactsList, Filter } from 'components/Phonebook';
 import { Container } from './Phonebook.styled';
+import { Loader } from './Loader/Loader';
 
 export const Phonebook = () => {
   const dispatch = useDispatch();
@@ -39,11 +40,7 @@ export const Phonebook = () => {
       />
       {isOpenForm && <ContactsForm toggle={toggle} />}
       {isOpenFilter && <Filter />}
-      {isLoading && !error && (
-        <p style={{ textAlign: 'center', marginTop: '20px' }}>
-          <b>Please wait your contacts 😀, Thank you!</b>
-        </p>
-      )}
+      {isLoading && !error && <Loader />}
       {!isLoading && <ContactsList />}
     </Container>
   );

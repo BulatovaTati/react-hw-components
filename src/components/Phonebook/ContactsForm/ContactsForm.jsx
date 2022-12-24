@@ -38,6 +38,7 @@ export const ContactsForm = ({ toggle }) => {
     }
 
     dispatch(addContact(values));
+    Notify.success('Contact added');
     resetForm();
     toggle('isOpenForm');
   };
