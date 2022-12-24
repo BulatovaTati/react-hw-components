@@ -8,6 +8,7 @@ import { Title, Wrapper } from './ContactsList.styled';
 
 const ContactsList = () => {
   const contacts = useSelector(getContacts);
+
   const filter = useSelector(getFilterValue);
 
   const visibleContacts = () =>

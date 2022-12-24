@@ -1,30 +1,64 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { fetchContacts, addContact, deleteContact } from './operations';
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
     items: [],
+    isLoading: false,
+    error: null,
   },
-  reducers: {
-    addContact(state, { payload: { name, number } }) {
+
+  extraReducers: {
+    [fetchContacts.pending]: handlePending,
+    [addContact.pending]: handlePending,
+    [deleteContact.pending]: handlePending,
+
+    [addContact.fulfilled](state, { payload: { name, number } }) {
+      state.isLoading = false;
+      state.error = null;
+
       if (state.items.some(el => el.name === name)) {
         Notify.failure(`${name} is already in contacts`);
+
         return;
       }
+
       state.items.push({
-        id: nanoid(6),
         name,
         number,
       });
       Notify.success('Contact added');
     },
 
-    deleteContact(state, action) {
-      state.items = state.items.filter(el => el.id !== action.payload);
-      Notify.success('Contact removed');
+    [deleteContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      const index = state.items.findIndex(
+        task => task.id === action.payload.id
+      );
+      state.items.splice(index, 1);
+    },
+
+    [fetchContacts.rejected]: handleRejected,
+    [addContact.rejected]: handleRejected,
+    [deleteContact.rejected]: handleRejected,
+
+    [fetchContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
     },
   },
 });
@@ -40,4 +74,4 @@ export const contactsReducer = persistReducer(
   contactsSlice.reducer
 );
 
-export const { addContact, deleteContact } = contactsSlice.actions;
+// export const { addContact, deleteContact } = contactsSlice.actions;

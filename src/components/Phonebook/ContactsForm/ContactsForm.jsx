@@ -1,8 +1,10 @@
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import { addContact } from 'redux/contactsSlice';
-import { useDispatch } from 'react-redux';
+
+import { addContact } from 'redux/operations';
+
 import {
   ErrorMsg,
   FormInner,
