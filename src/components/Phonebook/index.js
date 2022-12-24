@@ -1,4 +1,4 @@
-export * as Menu from './Menu/Menu';
-export * as ContactsForm from './ContactsForm/ContactsForm';
-export * as ContactsList from './ContactsList/ContactsList';
-export * as Filter from './Filter/Filter';
+export { Menu } from './Menu/Menu';
+export { ContactsForm } from './ContactsForm/ContactsForm';
+export { ContactsList } from './ContactsList/ContactsList';
+export { Filter } from './Filter/Filter';
