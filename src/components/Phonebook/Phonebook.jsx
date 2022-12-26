@@ -1,20 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { selectError, selectIsLoading } from 'redux/selectors';
+import { useState } from 'react';
 import { ContactsForm, Menu, ContactsList, Filter } from 'components/Phonebook';
 import { Container } from './Phonebook.styled';
 import { Loader } from './Loader/Loader';
+import { useGetContactsQuery } from 'redux/contactsSlice';
 
 export const Phonebook = () => {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
+  const { isFetching, error } = useGetContactsQuery();
   const [isOpenForm, setIsOpenForm] = useState(false);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
 
@@ -40,8 +31,8 @@ export const Phonebook = () => {
       />
       {isOpenForm && <ContactsForm toggle={toggle} />}
       {isOpenFilter && <Filter />}
-      {isLoading && !error && <Loader />}
-      {!isLoading && <ContactsList />}
+      {isFetching && !error && <Loader />}
+      {!isFetching && <ContactsList />}
     </Container>
   );
 };

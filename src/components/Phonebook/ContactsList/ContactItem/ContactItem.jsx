@@ -1,15 +1,14 @@
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deleteContact } from 'redux/operations';
-
 import { Contact, IconUser, Item, Button } from './ContactItem.styled';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { Notify } from 'notiflix';
+import { useDeleteContactMutation } from 'redux/contactsSlice';
 
 export const ContactItem = ({ id, name, number }) => {
-  const dispatch = useDispatch();
+  const [deleteContact] = useDeleteContactMutation();
+
   const handleDelete = () => {
-    dispatch(deleteContact(id));
+    deleteContact(id);
     Notify.success('Contact removed');
   };
 

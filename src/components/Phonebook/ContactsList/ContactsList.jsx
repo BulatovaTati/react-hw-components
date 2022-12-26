@@ -1,18 +1,29 @@
 import { useSelector } from 'react-redux';
-import { visibleContacts } from 'redux/selectors';
+import { useGetContactsQuery } from 'redux/contactsSlice';
+import { selectFilterValue } from 'redux/filterSlice';
+
 import { ContactItem } from './ContactItem/ContactItem';
 import { Notification } from 'components/Phonebook/Notification/Notification';
-import { Title, Wrapper } from './ContactsList.styled';
+import { TitleEl } from 'components/Phonebook/Title/Title';
+import { Wrapper } from './ContactsList.styled';
 
 export const ContactsList = () => {
-  const contacts = useSelector(visibleContacts);
+  const filter = useSelector(selectFilterValue);
+  const { data } = useGetContactsQuery();
+
+  const visibleContacts = () =>
+    data.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+  const filteredContacts = visibleContacts();
 
   return (
     <Wrapper>
-      <Title>Contacts</Title>
-      {contacts.length > 0 ? (
+      <TitleEl>Contacts</TitleEl>
+      {filteredContacts.length > 0 ? (
         <ul>
-          {contacts.map(({ id, name, number }) => (
+          {filteredContacts.map(({ id, name, number }) => (
             <ContactItem key={id} id={id} name={name} number={number} />
           ))}
         </ul>
