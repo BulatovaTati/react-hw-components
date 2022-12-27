@@ -1,6 +1,6 @@
 import { Button, Wrapper } from './Menu.styled';
 import { RiUserSearchLine, RiUserAddLine } from 'react-icons/ri';
-import { TitleEl } from 'components/Phonebook/Title/Title';
+import { TitleEl } from 'components/Title/Title';
 
 export const Menu = ({ toggle, isOpenFilter, isOpenForm }) => {
   return (

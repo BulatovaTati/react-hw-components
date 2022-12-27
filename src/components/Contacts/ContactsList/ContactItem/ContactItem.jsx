@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Contact, IconUser, Item, Button } from './ContactItem.styled';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { Notify } from 'notiflix';
-import { useDeleteContactMutation } from 'redux/contactsSlice';
+import { useDeleteContactMutation } from 'redux/contacts/contactsSlice';
 
 export const ContactItem = ({ id, name, number }) => {
   const [deleteContact] = useDeleteContactMutation();

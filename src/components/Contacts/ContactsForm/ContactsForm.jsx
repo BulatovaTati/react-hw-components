@@ -14,7 +14,7 @@ import { Button } from './ContactsForm.styled';
 import {
   useAddContactMutation,
   useGetContactsQuery,
-} from 'redux/contactsSlice';
+} from 'redux/contacts/contactsSlice';
 
 const nameRegExp = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 

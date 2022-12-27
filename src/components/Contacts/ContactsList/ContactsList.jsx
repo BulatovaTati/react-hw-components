@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
-import { useGetContactsQuery } from 'redux/contactsSlice';
-import { selectFilterValue } from 'redux/filterSlice';
-
+import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
+import { selectFilterValue } from 'redux/filter/filterSlice';
 import { ContactItem } from './ContactItem/ContactItem';
-import { Notification } from 'components/Phonebook/Notification/Notification';
-import { TitleEl } from 'components/Phonebook/Title/Title';
+import { Notification } from 'components/Notification/Notification';
+import { TitleEl } from 'components/Title/Title';
 import { Wrapper } from './ContactsList.styled';
 
 export const ContactsList = () => {
