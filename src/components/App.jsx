@@ -1,11 +1,12 @@
-import { useEffect, Suspense, lazy } from 'react';
+import { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch } from 'react-router-dom';
-import AppBar from 'components/Pages/AppBar/AppBar  ';
-import Container from './Container/Container';
+import { Route, Routes } from 'react-router-dom';
+
 import PrivateRoute from './Auth/PrivateRoute';
-import PublicRoute from './Auth/PublicRoute';
-import { authOperations, authSelectors } from './redux/auth';
+import RestrictedRoute from './Auth/RestrictedRoute';
+
+import { authOperations, authSelectors } from 'redux/auth';
+import { Layout } from './Layout/Layout';
 
 const Home = lazy(() => import('../pages/Home'));
 const Register = lazy(() => import('../pages/Register'));
@@ -20,37 +21,32 @@ const App = () => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
-  return (
-    <Container>
-      {isFetchingCurrentUser ? (
-        <h1>Показываем React Skeleton</h1>
-      ) : (
-        <>
-          <AppBar />
-          <Switch>
-            <Suspense fallback={<p>Загружаем...</p>}>
-              <PublicRoute exact path="/">
-                <Home />
-              </PublicRoute>
-              <PublicRoute exact path="/register" restricted>
-                <Register />
-              </PublicRoute>
-              <PublicRoute
-                exact
-                path="/login"
-                redirectTo="/contacts"
-                restricted
-              >
-                <Login />
-              </PublicRoute>
-              <PrivateRoute path="/todos" redirectTo="/login">
-                <Contacts />
-              </PrivateRoute>
-            </Suspense>
-          </Switch>
-        </>
-      )}
-    </Container>
+  return isFetchingCurrentUser ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
 };
 export default App;
