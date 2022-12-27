@@ -4,7 +4,7 @@ import { AuthNav } from '../../Auth/AuthNav/AuthNav';
 import { useAuth } from 'hooks';
 import css from './AppBar.module.css';
 
-export const AppBar = () => {
+const AppBar = () => {
   const { isLoggedIn } = useAuth();
 
   return (
@@ -14,3 +14,5 @@ export const AppBar = () => {
     </header>
   );
 };
+
+export default AppBar;

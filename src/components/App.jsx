@@ -1,39 +1,56 @@
-import { useState } from 'react';
-import { ContactsForm, Menu, ContactsList } from 'components/contacts';
-import { Filter } from './Filter/Filter';
-import { Container } from './Phonebook.styled';
-import { Loader } from './Loader/Loader';
-import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
+import { useEffect, Suspense, lazy } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Switch } from 'react-router-dom';
+import AppBar from 'components/Pages/AppBar/AppBar  ';
+import Container from './Container/Container';
+import PrivateRoute from './Auth/PrivateRoute';
+import PublicRoute from './Auth/PublicRoute';
+import { authOperations, authSelectors } from './redux/auth';
 
-export const App = () => {
-  const { isFetching, error } = useGetContactsQuery();
-  const [isOpenForm, setIsOpenForm] = useState(false);
-  const [isOpenFilter, setIsOpenFilter] = useState(false);
+const Home = lazy(() => import('../pages/Home'));
+const Register = lazy(() => import('../pages/Register'));
+const Login = lazy(() => import('../pages/Login'));
+const Contacts = lazy(() => import('../pages/Contacts'));
 
-  const toggle = component => {
-    switch (component) {
-      case 'isOpenForm':
-        setIsOpenForm(f => !f);
-        break;
-      case 'isOpenFilter':
-        setIsOpenFilter(f => !f);
-        break;
-      default:
-        throw new Error(`Unknown component${component}`);
-    }
-  };
+const App = () => {
+  const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
 
-  // return (
-  //   <Container>
-  //     <Menu
-  //       isOpenForm={isOpenForm}
-  //       isOpenFilter={isOpenFilter}
-  //       toggle={toggle}
-  //     />
-  //     {isOpenForm && <ContactsForm toggle={toggle} />}
-  //     {isOpenFilter && <Filter />}
-  //     {isFetching && !error && <Loader />}
-  //     {!isFetching && <ContactsList />}
-  //   </Container>
-  // );
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
+  return (
+    <Container>
+      {isFetchingCurrentUser ? (
+        <h1>Показываем React Skeleton</h1>
+      ) : (
+        <>
+          <AppBar />
+          <Switch>
+            <Suspense fallback={<p>Загружаем...</p>}>
+              <PublicRoute exact path="/">
+                <Home />
+              </PublicRoute>
+              <PublicRoute exact path="/register" restricted>
+                <Register />
+              </PublicRoute>
+              <PublicRoute
+                exact
+                path="/login"
+                redirectTo="/contacts"
+                restricted
+              >
+                <Login />
+              </PublicRoute>
+              <PrivateRoute path="/todos" redirectTo="/login">
+                <Contacts />
+              </PrivateRoute>
+            </Suspense>
+          </Switch>
+        </>
+      )}
+    </Container>
+  );
 };
+export default App;
