@@ -2,7 +2,7 @@ name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches: [goit-react-hw-07-phonebook]
+    branches: [goit-react-hw-08-phonebook]
 
 jobs:
   build-and-deploy:
