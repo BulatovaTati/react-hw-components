@@ -5,8 +5,10 @@ import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './Auth/PrivateRoute';
 import RestrictedRoute from './Auth/RestrictedRoute';
 
-import { authOperations, authSelectors } from 'redux/auth';
+import { refreshUser } from 'redux/auth/authOperations';
+
 import { Layout } from './Layout/Layout';
+import { selectIsFetchingCurrent } from 'redux/auth/authSelectors';
 
 const Home = lazy(() => import('../pages/Home'));
 const Register = lazy(() => import('../pages/Register'));
@@ -15,10 +17,10 @@ const Contacts = lazy(() => import('../pages/Contacts'));
 
 const App = () => {
   const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
+  const isFetchingCurrentUser = useSelector(selectIsFetchingCurrent);
 
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return isFetchingCurrentUser ? (
