@@ -1,10 +1,10 @@
-import { Loader } from 'components/Loader/Loader';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import AppBar from '../Pages/AppBar/AppBar';
+import { Loader } from 'components/Loader/Loader';
 import { Container } from './Layout.styled';
 
-export const Layout = () => {
+const Layout = () => {
   return (
     <Container>
       <AppBar />
@@ -14,3 +14,4 @@ export const Layout = () => {
     </Container>
   );
 };
+export default Layout;
