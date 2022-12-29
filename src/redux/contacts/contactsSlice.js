@@ -1,36 +1,49 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts, addContact, deleteContact } from './contactsOperations';
 
-export const contactsApi = createApi({
-  reducerPath: 'contacts',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://connections-api.herokuapp.com',
-  }),
-  tagTypes: ['Contacts'],
-  endpoints: builder => ({
-    getContacts: builder.query({
-      query: () => '/contacts',
-      providesTags: ['Contacts'],
-    }),
-    addContact: builder.mutation({
-      query: values => ({
-        url: `/contacts`,
-        method: 'POST',
-        body: values,
-      }),
-      invalidatesTags: ['Contacts'],
-    }),
-    deleteContact: builder.mutation({
-      query: id => ({
-        url: `contacts/${id}`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: ['Contacts'],
-    }),
-  }),
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
+export const contactsSlice = createSlice({
+  name: 'contacts',
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+  },
+
+  extraReducers: {
+    [fetchContacts.pending]: handlePending,
+    [fetchContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+    },
+    [fetchContacts.rejected]: handleRejected,
+
+    [addContact.pending]: handlePending,
+    [addContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items.push(action.payload);
+    },
+    [addContact.rejected]: handleRejected,
+
+    [deleteContact.pending]: handlePending,
+    [deleteContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      const index = state.items.findIndex(
+        task => task.id === action.payload.id
+      );
+      state.items.splice(index, 1);
+    },
+    [deleteContact.rejected]: handleRejected,
+  },
 });
-
-export const {
-  useGetContactsQuery,
-  useAddContactMutation,
-  useDeleteContactMutation,
-} = contactsApi;

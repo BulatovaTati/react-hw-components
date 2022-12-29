@@ -1,8 +1,11 @@
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { addContact } from 'redux/contacts/contactsOperations';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   ErrorMsg,
   FormInner,
@@ -11,10 +14,6 @@ import {
   Label,
 } from './ContactsForm.styled';
 import { Button } from './ContactsForm.styled';
-import {
-  useAddContactMutation,
-  useGetContactsQuery,
-} from 'redux/contacts/contactsSlice';
 
 const nameRegExp = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
@@ -30,8 +29,8 @@ const schema = yup.object().shape({
 });
 
 export const ContactsForm = ({ toggle }) => {
-  const { data: contacts } = useGetContactsQuery();
-  const [addContact] = useAddContactMutation();
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = async (values, { resetForm }) => {
     if (contacts.find(contact => contact.name === values.name)) {
@@ -39,7 +38,7 @@ export const ContactsForm = ({ toggle }) => {
     }
 
     try {
-      await addContact(values);
+      await dispatch(addContact(values));
       Notify.success('Contact added');
       resetForm();
       toggle('isOpenForm');
