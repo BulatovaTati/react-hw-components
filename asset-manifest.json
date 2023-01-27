@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-hw-components/static/css/main.c3d5249d.css",
-    "main.js": "/react-hw-components/static/js/main.5b3c3b75.js",
-    "static/js/266.55940f41.chunk.js": "/react-hw-components/static/js/266.55940f41.chunk.js",
-    "static/js/279.1e908e99.chunk.js": "/react-hw-components/static/js/279.1e908e99.chunk.js",
-    "static/js/787.eb428e7b.chunk.js": "/react-hw-components/static/js/787.eb428e7b.chunk.js",
-    "static/js/267.2f405e18.chunk.js": "/react-hw-components/static/js/267.2f405e18.chunk.js",
-    "static/js/10.d8f300e4.chunk.js": "/react-hw-components/static/js/10.d8f300e4.chunk.js",
-    "static/js/142.b3288ba8.chunk.js": "/react-hw-components/static/js/142.b3288ba8.chunk.js",
-    "index.html": "/react-hw-components/index.html",
-    "main.c3d5249d.css.map": "/react-hw-components/static/css/main.c3d5249d.css.map",
-    "main.5b3c3b75.js.map": "/react-hw-components/static/js/main.5b3c3b75.js.map",
-    "266.55940f41.chunk.js.map": "/react-hw-components/static/js/266.55940f41.chunk.js.map",
-    "279.1e908e99.chunk.js.map": "/react-hw-components/static/js/279.1e908e99.chunk.js.map",
-    "787.eb428e7b.chunk.js.map": "/react-hw-components/static/js/787.eb428e7b.chunk.js.map",
-    "267.2f405e18.chunk.js.map": "/react-hw-components/static/js/267.2f405e18.chunk.js.map",
-    "10.d8f300e4.chunk.js.map": "/react-hw-components/static/js/10.d8f300e4.chunk.js.map",
-    "142.b3288ba8.chunk.js.map": "/react-hw-components/static/js/142.b3288ba8.chunk.js.map"
+    "main.css": "/BulatovaTati/React-Contact-Book/static/css/main.c3d5249d.css",
+    "main.js": "/BulatovaTati/React-Contact-Book/static/js/main.782d4c46.js",
+    "static/js/266.55940f41.chunk.js": "/BulatovaTati/React-Contact-Book/static/js/266.55940f41.chunk.js",
+    "static/js/279.1e908e99.chunk.js": "/BulatovaTati/React-Contact-Book/static/js/279.1e908e99.chunk.js",
+    "static/js/787.eb428e7b.chunk.js": "/BulatovaTati/React-Contact-Book/static/js/787.eb428e7b.chunk.js",
+    "static/js/267.2f405e18.chunk.js": "/BulatovaTati/React-Contact-Book/static/js/267.2f405e18.chunk.js",
+    "static/js/10.d8f300e4.chunk.js": "/BulatovaTati/React-Contact-Book/static/js/10.d8f300e4.chunk.js",
+    "static/js/142.b3288ba8.chunk.js": "/BulatovaTati/React-Contact-Book/static/js/142.b3288ba8.chunk.js",
+    "index.html": "/BulatovaTati/React-Contact-Book/index.html",
+    "main.c3d5249d.css.map": "/BulatovaTati/React-Contact-Book/static/css/main.c3d5249d.css.map",
+    "main.782d4c46.js.map": "/BulatovaTati/React-Contact-Book/static/js/main.782d4c46.js.map",
+    "266.55940f41.chunk.js.map": "/BulatovaTati/React-Contact-Book/static/js/266.55940f41.chunk.js.map",
+    "279.1e908e99.chunk.js.map": "/BulatovaTati/React-Contact-Book/static/js/279.1e908e99.chunk.js.map",
+    "787.eb428e7b.chunk.js.map": "/BulatovaTati/React-Contact-Book/static/js/787.eb428e7b.chunk.js.map",
+    "267.2f405e18.chunk.js.map": "/BulatovaTati/React-Contact-Book/static/js/267.2f405e18.chunk.js.map",
+    "10.d8f300e4.chunk.js.map": "/BulatovaTati/React-Contact-Book/static/js/10.d8f300e4.chunk.js.map",
+    "142.b3288ba8.chunk.js.map": "/BulatovaTati/React-Contact-Book/static/js/142.b3288ba8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c3d5249d.css",
-    "static/js/main.5b3c3b75.js"
+    "static/js/main.782d4c46.js"
   ]
 }
