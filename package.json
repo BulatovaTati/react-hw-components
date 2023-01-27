@@ -2,7 +2,7 @@
   "name": "react-hw-components",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bulatovatati.github.io/react-hw-components/",
+  "homepage": "https://github.com/BulatovaTati/React-Contact-Book/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
