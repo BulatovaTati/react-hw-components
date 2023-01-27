@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { ContactsForm, Menu, ContactsList } from 'components/Contacts';
-import { Filter } from 'components/Filter/Filter';
-import { Container } from 'components/Phonebook.styled';
-import { Loader } from 'components/Loader/Loader';
-import { selectError, selectIsLoading } from 'redux/contacts/contactsSelectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
+import { selectError, selectIsLoading } from 'redux/contacts/contactsSelectors';
+import { ContactsForm, Menu, ContactsList } from 'components/Contacts';
+import { Filter } from 'components/Filter/Filter';
+import { Loader } from 'components/Loader/Loader';
+import { Container } from 'components/Phonebook.styled';
 
 const Contacts = () => {
   const dispatch = useDispatch();
